@@ -1,14 +1,4 @@
 @import "tailwindcss";
-@import "./global.css" layer(base);
-@import "../app/app.css" layer(components);
-@import "../components/footer.css" layer(components);
-@import "../components/hero-mockup.css" layer(components);
-@import "../components/navbar.css" layer(components);
-@import "../components/sections.css" layer(components);
-@import "../pages/auth.css" layer(components);
-@import "../pages/extra.css" layer(components);
-@import "../pages/forms.css" layer(components);
-@import "../pages/legal.css" layer(components);
 
 @theme {
   --color-ink: #0b1a14;
@@ -28,3 +18,37 @@
   --shadow-deep: 0 40px 80px -30px rgba(11,26,20,.35), 0 10px 30px -10px rgba(11,26,20,.15);
   --ease-premium: cubic-bezier(.22,1,.36,1);
 }
+
+/* Design tokens + element defaults (not expressible as per-element utilities) */
+@layer base {
+  :root{--ink:#0b1a14;--ink-2:#13261e;--text:#1d2b25;--muted:#5d6d66;--line:#e6ece9;--line-2:#d7e0dc;--bg:#fbfcfb;--bg-soft:#f3f7f5;--card:#ffffff;--brand:#0f9d6e;--brand-600:#0b8a60;--brand-700:#07704e;--brand-50:#e8f7f0;--brand-100:#cdeedf;--mint:#6ee7b7;--amber:#f59e0b;--amber-50:#fff6e5;--red:#e5484d;--red-50:#fdecec;--blue:#3b82f6;--blue-50:#eaf2ff;--violet:#7c5cff;--violet-50:#f1edff;--r-sm:10px;--r:16px;--r-lg:24px;--r-xl:32px;--sh-1:0 1px 2px rgba(11,26,20,.05),0 1px 1px rgba(11,26,20,.03);--sh-2:0 10px 30px -12px rgba(11,26,20,.18),0 2px 6px rgba(11,26,20,.05);--sh-3:0 40px 80px -30px rgba(11,26,20,.35),0 10px 30px -10px rgba(11,26,20,.15);--f-display:"Plus Jakarta Sans",system-ui,sans-serif;--f-body:"Inter",system-ui,sans-serif;--ease:cubic-bezier(.22,1,.36,1);--wrap:1200px}
+  *{box-sizing:border-box}
+  *::before{box-sizing:border-box}
+  *::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  html.lenis{height:auto}
+  html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto !important}
+  body{margin:0;font-family:var(--f-body);color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1{font-family:var(--f-display);color:var(--ink);line-height:1.12;letter-spacing:-.025em;margin:0}
+  h2{font-family:var(--f-display);color:var(--ink);line-height:1.12;letter-spacing:-.025em;margin:0}
+  h3{font-family:var(--f-display);color:var(--ink);line-height:1.12;letter-spacing:-.025em;margin:0}
+  h4{font-family:var(--f-display);color:var(--ink);line-height:1.12;letter-spacing:-.025em;margin:0}
+  p{margin:0}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%}
+  svg{max-width:100%}
+  button{font:inherit;color:inherit}
+  input{font:inherit;color:inherit}
+  select{font:inherit;color:inherit}
+  textarea{font:inherit;color:inherit}
+  :focus-visible{outline:2.5px solid var(--brand);outline-offset:3px;border-radius:8px}
+  ::selection{background:var(--brand-100)}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01ms !important;transition-duration:.01ms !important}}
+  form{display:grid;gap:18px}
+  input[type=checkbox]{width:18px;height:18px;accent-color:var(--brand);cursor:pointer}
+}
+
+@keyframes dash{to{background-position:9px 0}}
+@keyframes breathe{50%{transform:scale(1.1);opacity:.75}}
+@keyframes spin{to{transform:rotate(360deg)}}

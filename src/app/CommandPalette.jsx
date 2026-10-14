@@ -1,3 +1,4 @@
+import { cx } from '../styles/ui.js'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
@@ -39,26 +40,26 @@ export default function CommandPalette({ open, setOpen }) {
 
   return (
     <AnimatePresence>{open && (
-      <motion.div className="fixed inset-0 z-[90] grid place-items-start bg-ink/50 px-4 pt-[12vh] backdrop-blur-sm" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)}>
+      <motion.div className={cx('fixed inset-0 z-[90] grid place-items-start bg-ink/50 px-4 pt-[12vh] backdrop-blur-sm')} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setOpen(false)}>
         <motion.div role="dialog" aria-modal="true" aria-label="Command palette" onClick={e => e.stopPropagation()}
-          className="mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-white shadow-deep"
+          className={cx('mx-auto w-full max-w-xl overflow-hidden rounded-2xl border border-line bg-white shadow-deep')}
           initial={{ y: -16, scale: .97 }} animate={{ y: 0, scale: 1 }} exit={{ y: -8, scale: .98 }} transition={{ duration: .2 }}>
-          <div className="flex items-center gap-3 border-b border-line px-4">
-            <Search size={18} className="text-muted" />
+          <div className={cx('flex items-center gap-3 border-b border-line px-4')}>
+            <Search size={18} className={cx('text-muted')} />
             <input ref={inputRef} value={q} onChange={e => { setQ(e.target.value); setActive(0) }} onKeyDown={onKey}
-              placeholder="Search pages, products, suppliers…" aria-label="Search" className="h-14 w-full bg-transparent outline-none" />
-            <kbd className="rounded-md border border-line px-1.5 text-xs text-muted">Esc</kbd>
+              placeholder="Search pages, products, suppliers…" aria-label="Search" className={cx('h-14 w-full bg-transparent outline-none')} />
+            <kbd className={cx('rounded-md border border-line px-1.5 text-xs text-muted')}>Esc</kbd>
           </div>
-          <ul className="max-h-80 overflow-auto p-2" role="listbox">
+          <ul className={cx('max-h-80 overflow-auto p-2')} role="listbox">
             {results.map((r, i) => (
               <li key={r.group + r.label} role="option" aria-selected={i === active}>
                 <button onMouseEnter={() => setActive(i)} onClick={() => go(r)}
-                  className={cn('flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-sm', i === active && 'bg-soft')}>
-                  <span><small className="mr-2 text-xs font-semibold uppercase tracking-wider text-brand-700">{r.group}</small>{r.label}</span>
-                  {i === active && <CornerDownLeft size={14} className="text-muted" />}
+                  className={cx(cn('flex w-full items-center justify-between gap-3 rounded-xl px-3 py-2.5 text-left text-sm', i === active && 'bg-soft'))}>
+                  <span><small className={cx('mr-2 text-xs font-semibold uppercase tracking-wider text-brand-700')}>{r.group}</small>{r.label}</span>
+                  {i === active && <CornerDownLeft size={14} className={cx('text-muted')} />}
                 </button>
               </li>))}
-            {!results.length && <li className="p-6 text-center text-sm text-muted">No results for “{q}”.</li>}
+            {!results.length && <li className={cx('p-6 text-center text-sm text-muted')}>No results for “{q}”.</li>}
           </ul>
         </motion.div>
       </motion.div>)}

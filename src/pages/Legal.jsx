@@ -1,9 +1,10 @@
+import { cx } from '../styles/ui.js'
 import { PageHero } from '../components/Sections.jsx'
 const Doc = ({ eyebrow, title, sections }) => (<>
   <PageHero eyebrow={eyebrow} title={title} lead="Last updated: October 2026"/>
-  <section className="section" style={{paddingTop:40}}><div className="wrap legal">
+  <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap legal')}>
     {sections.map(([h,p])=> <article key={h}><h2>{h}</h2><p>{p}</p></article>)}
-    <p className="note">This document is a template for a product in development and is not legal advice.</p>
+    <p className={cx('note')}>This document is a template for a product in development and is not legal advice.</p>
   </div></section>
 </>)
 export const Privacy = () => <Doc eyebrow="Legal" title="Privacy Policy" sections={[

@@ -1,3 +1,4 @@
+import { cx } from '../styles/ui.js'
 import { btn } from '../components/ui/button.js'
 import { useMemo, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -19,29 +20,29 @@ export default function ReviewSync(){
   const counts = useMemo(()=>review.reduce((m,r)=>m.set(r.flag,(m.get(r.flag)??0)+1),new Map()),[review]); const count = k => counts.get(k)??0
   return (<>
     <PageHead title="Review & Sync" sub={saved?.file ? `${saved.file} · parsed in your browser` : "Demo data · Northline Wholesale · northline_stock.csv"}/>
-    <div className="rv-sum">
-      {[['Matched',count('matched'),'ok'],['Price changes',count('price'),'warn'],['Flagged',count('missing')+count('invalid')+count('duplicate'),'err'],['Selected',sel.size,'info']].map(([k,v,c])=> <div key={k} className={`card rv-s c-${c==='ok'?'brand':c==='warn'?'amber':c==='err'?'red':'blue'}`}><small>{k}</small><b>{v}</b></div>)}
+    <div className={cx('rv-sum')}>
+      {[['Matched',count('matched'),'ok'],['Price changes',count('price'),'warn'],['Flagged',count('missing')+count('invalid')+count('duplicate'),'err'],['Selected',sel.size,'info']].map(([k,v,c])=> <div key={k} className={cx(`card rv-s c-${c==='ok'?'brand':c==='warn'?'amber':c==='err'?'red':'blue'}`)}><small>{k}</small><b>{v}</b></div>)}
     </div>
-    <div className="card panel">
-      <div className="toolbar"><div className="tabs" role="tablist">{filters.map(x=> <button key={x} role="tab" aria-selected={f===x} className={f===x?'on':''} onClick={()=>setF(x)}>{x==='all'?'All':label[x][1]}</button>)}</div></div>
-      <div className="table-wrap"><table className="tbl">
-        <thead><tr><th><span className="sr-only">Include</span></th><th>SKU</th><th>Product</th><th className="r">Stock</th><th className="r">Price</th><th>Status</th></tr></thead>
+    <div className={cx('card panel')}>
+      <div className={cx('toolbar')}><div className={cx('tabs')} role="tablist">{filters.map(x=> <button key={x} role="tab" aria-selected={f===x} className={cx(f===x?'on':'')} onClick={()=>setF(x)}>{x==='all'?'All':label[x][1]}</button>)}</div></div>
+      <div className={cx('table-wrap')}><table className={cx('tbl')}>
+        <thead><tr><th><span className={cx('sr-only')}>Include</span></th><th>SKU</th><th>Product</th><th className={cx('r')}>Stock</th><th className={cx('r')}>Price</th><th>Status</th></tr></thead>
         <tbody>{rows.map(r=>{ const [k,l]=label[r.flag]; const dis=!ok(r); return (
-          <tr key={r.i} className={dis?'row-flag':''}>
+          <tr key={r.i} className={cx(dis?'row-flag':'')}>
             <td><input type="checkbox" aria-label={`Include ${r.sku}`} checked={sel.has(r.i)} disabled={dis||state!=='idle'} onChange={()=>toggle(r.i)}/></td>
-            <td className="mono">{r.sku}</td><td>{r.name}</td>
-            <td className="r">{r.cur??'—'} <span className="muted">→</span> <b className={r.next<0?'neg':''}>{r.next}</b></td>
-            <td className="r">{r.curP!=null?`$${r.curP}`:'—'} <span className="muted">→</span> <b className={r.nextP!==r.curP&&r.curP!=null?'chg':''}>${r.nextP}</b></td>
+            <td className={cx('mono')}>{r.sku}</td><td>{r.name}</td>
+            <td className={cx('r')}>{r.cur??'—'} <span className={cx('muted')}>→</span> <b className={cx(r.next<0?'neg':'')}>{r.next}</b></td>
+            <td className={cx('r')}>{r.curP!=null?`$${r.curP}`:'—'} <span className={cx('muted')}>→</span> <b className={cx(r.nextP!==r.curP&&r.curP!=null?'chg':'')}>${r.nextP}</b></td>
             <td><Badge kind={k}>{l}</Badge></td>
           </tr>) })}</tbody>
       </table></div>
-      <div className="rv-foot">
-        <p className="muted"><ShieldCheck size={16}/>Flagged rows are never synced automatically.</p>
-        <button className={btn('brand','md')} onClick={confirm} disabled={!sel.size||state!=='idle'}>
-          {state==='syncing'?<><RefreshCcw size={16} className="spin"/>Syncing…</>:state==='done'?<><CheckCircle2 size={16}/>Synced</>:<>Confirm & sync {sel.size} updates</>}
+      <div className={cx('rv-foot')}>
+        <p className={cx('muted')}><ShieldCheck size={16}/>Flagged rows are never synced automatically.</p>
+        <button className={cx(btn('brand','md'))} onClick={confirm} disabled={!sel.size||state!=='idle'}>
+          {state==='syncing'?<><RefreshCcw size={16} className={cx('spin')}/>Syncing…</>:state==='done'?<><CheckCircle2 size={16}/>Synced</>:<>Confirm & sync {sel.size} updates</>}
         </button>
       </div>
-      <AnimatePresence>{state==='done' && <motion.p initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} className="alert ok-a" role="status"><CheckCircle2 size={16}/>{sel.size} products were updated in this demo sync. A report was added to Sync History.</motion.p>}</AnimatePresence>
+      <AnimatePresence>{state==='done' && <motion.p initial={{opacity:0,y:8}} animate={{opacity:1,y:0}} className={cx('alert ok-a')} role="status"><CheckCircle2 size={16}/>{sel.size} products were updated in this demo sync. A report was added to Sync History.</motion.p>}</AnimatePresence>
     </div>
   </>)
 }

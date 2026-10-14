@@ -1,4 +1,5 @@
+import { cx } from '../styles/ui.js'
 export const PageHead = ({ title, sub, children }) => (
-  <div className="phead"><div><h1>{title}</h1>{sub&&<p>{sub}</p>}</div>{children&&<div className="phead-act">{children}</div>}</div>
+  <div className={cx('phead')}><div><h1>{title}</h1>{sub&&<p>{sub}</p>}</div>{children&&<div className={cx('phead-act')}>{children}</div>}</div>
 )
-export const Badge = ({ kind, children }) => <span className={`badge b-${kind}`}>{children}</span>
+export const Badge = ({ kind, children }) => <span className={cx(`badge b-${kind}`)}>{children}</span>

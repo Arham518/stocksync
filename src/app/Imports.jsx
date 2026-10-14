@@ -1,3 +1,4 @@
+import { cx } from '../styles/ui.js'
 import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { UploadCloud, FileSpreadsheet, X, Download, AlertTriangle, CheckCircle2, ArrowRight } from 'lucide-react'
@@ -25,62 +26,62 @@ export default function Imports() {
 
   return (<>
     <PageHead title="Imports" sub="Upload a supplier CSV. It is parsed in your browser — nothing leaves your computer.">
-      <button className={btn('ghost', 'sm')} onClick={download}><Download size={16} />Sample CSV</button>
+      <button className={cx(btn('ghost', 'sm'))} onClick={download}><Download size={16} />Sample CSV</button>
     </PageHead>
-    <div className="grid gap-5 lg:grid-cols-[1.3fr_1fr]">
-      <div className="card panel">
-        <div className="field mb-4"><label htmlFor="sup">Supplier</label>
+    <div className={cx('grid gap-5 lg:grid-cols-[1.3fr_1fr]')}>
+      <div className={cx('card panel')}>
+        <div className={cx('field mb-4')}><label htmlFor="sup">Supplier</label>
           <select id="sup">{suppliers.map(s => <option key={s.id} value={s.id}>{s.name}</option>)}</select></div>
         <div
-          className={cn('drop', drag && 'drag')}
+          className={cx(cn('drop', drag && 'drag'))}
           onDragOver={e => { e.preventDefault(); setDrag(true) }}
           onDragLeave={() => setDrag(false)}
           onDrop={e => { e.preventDefault(); setDrag(false); csv.loadFile(e.dataTransfer.files[0]) }}
         >
-          <span className="drop-ic"><UploadCloud size={30} /></span>
+          <span className={cx('drop-ic')}><UploadCloud size={30} /></span>
           <b>Drag & drop your supplier file</b>
           <small>CSV up to 5 MB · Excel support planned</small>
-          <div className="mt-2.5 flex flex-wrap justify-center gap-2.5">
-            <label className={btn('primary', 'sm', 'cursor-pointer')} htmlFor="file-in">Browse files</label>
-            <button type="button" className={btn('ghost', 'sm')} onClick={() => csv.parseText(SAMPLE_CSV, 'sample_supplier.csv', SAMPLE_CSV.length)}>Use sample data</button>
+          <div className={cx('mt-2.5 flex flex-wrap justify-center gap-2.5')}>
+            <label className={cx(btn('primary', 'sm', 'cursor-pointer'))} htmlFor="file-in">Browse files</label>
+            <button type="button" className={cx(btn('ghost', 'sm'))} onClick={() => csv.parseText(SAMPLE_CSV, 'sample_supplier.csv', SAMPLE_CSV.length)}>Use sample data</button>
           </div>
-          <input ref={input} id="file-in" data-testid="file-input" type="file" accept=".csv,.txt,.xlsx,.xls" className="sr-only" onChange={e => csv.loadFile(e.target.files[0])} />
+          <input ref={input} id="file-in" data-testid="file-input" type="file" accept=".csv,.txt,.xlsx,.xls" className={cx('sr-only')} onChange={e => csv.loadFile(e.target.files[0])} />
         </div>
-        {csv.error && <p className="alert err-a" role="alert"><AlertTriangle size={16} />{csv.error}</p>}
+        {csv.error && <p className={cx('alert err-a')} role="alert"><AlertTriangle size={16} />{csv.error}</p>}
       </div>
 
-      <div className="card panel">
-        <div className="panel-h"><h2>File summary</h2></div>
-        {!csv.file ? <p className="empty">No file yet. Upload a CSV or use the sample to see the preview.</p> : (
-          <div className="grid gap-3.5">
-            <div className="file-row">
-              <span className="file-ic"><FileSpreadsheet size={18} /></span>
+      <div className={cx('card panel')}>
+        <div className={cx('panel-h')}><h2>File summary</h2></div>
+        {!csv.file ? <p className={cx('empty')}>No file yet. Upload a CSV or use the sample to see the preview.</p> : (
+          <div className={cx('grid gap-3.5')}>
+            <div className={cx('file-row')}>
+              <span className={cx('file-ic')}><FileSpreadsheet size={18} /></span>
               <div><b>{csv.file.name}</b><small>{(csv.file.size / 1024).toFixed(1)} KB</small></div>
-              <button className="icon-btn" onClick={reset} aria-label="Remove file"><X size={16} /></button>
+              <button className={cx('icon-btn')} onClick={reset} aria-label="Remove file"><X size={16} /></button>
             </div>
-            <dl className="m-0 grid grid-cols-2 gap-2">
+            <dl className={cx('m-0 grid grid-cols-2 gap-2')}>
               {summary.map(([k, v]) => (
-                <div key={k} className="min-w-0 rounded-xl bg-soft px-3 py-2.5">
-                  <dt className="text-xs text-muted">{k}</dt><dd className="m-0 truncate font-bold text-ink">{v}</dd>
+                <div key={k} className={cx('min-w-0 rounded-xl bg-soft px-3 py-2.5')}>
+                  <dt className={cx('text-xs text-muted')}>{k}</dt><dd className={cx('m-0 truncate font-bold text-ink')}>{v}</dd>
                 </div>
               ))}
             </dl>
             {flagged
-              ? <p className="alert warn-a"><AlertTriangle size={16} />{flagged} rows will be flagged for review.</p>
-              : <p className="alert ok-a"><CheckCircle2 size={16} />File looks good.</p>}
-            <Link to="/app/review" onClick={csv.saveForReview} className={btn('brand', 'sm', 'w-full')}>Continue to review <ArrowRight size={16} className="arrow" /></Link>
+              ? <p className={cx('alert warn-a')}><AlertTriangle size={16} />{flagged} rows will be flagged for review.</p>
+              : <p className={cx('alert ok-a')}><CheckCircle2 size={16} />File looks good.</p>}
+            <Link to="/app/review" onClick={csv.saveForReview} className={cx(btn('brand', 'sm', 'w-full'))}>Continue to review <ArrowRight size={16} className={cx('arrow')} /></Link>
           </div>
         )}
       </div>
     </div>
 
     {csv.file && (
-      <section className="card panel mt-5" aria-labelledby="pv">
-        <div className="panel-h"><h2 id="pv">Preview</h2><small className="text-muted">Showing {Math.min(50, csv.rows.length)} of {csv.rows.length} rows</small></div>
-        <div className="table-wrap" tabIndex={0} role="region" aria-label="CSV preview">
-          <table className="tbl" data-testid="preview-table">
+      <section className={cx('card panel mt-5')} aria-labelledby="pv">
+        <div className={cx('panel-h')}><h2 id="pv">Preview</h2><small className={cx('text-muted')}>Showing {Math.min(50, csv.rows.length)} of {csv.rows.length} rows</small></div>
+        <div className={cx('table-wrap')} tabIndex={0} role="region" aria-label="CSV preview">
+          <table className={cx('tbl')} data-testid="preview-table">
             <thead><tr><th>#</th>{csv.fields.map(f => <th key={f}>{f}{f === csv.cols.sku && <Badge kind="info">SKU</Badge>}</th>)}</tr></thead>
-            <tbody>{csv.rows.slice(0, 50).map((r, i) => <tr key={i}><td className="text-muted">{i + 1}</td>{csv.fields.map(f => <td key={f}>{r[f]}</td>)}</tr>)}</tbody>
+            <tbody>{csv.rows.slice(0, 50).map((r, i) => <tr key={i}><td className={cx('text-muted')}>{i + 1}</td>{csv.fields.map(f => <td key={f}>{r[f]}</td>)}</tr>)}</tbody>
           </table>
         </div>
       </section>

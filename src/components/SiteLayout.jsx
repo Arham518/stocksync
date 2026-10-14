@@ -1,3 +1,4 @@
+import { cx } from '../styles/ui.js'
 import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
 import Lenis from 'lenis'
@@ -17,7 +18,7 @@ export default function SiteLayout(){
     window.__lenis ? window.__lenis.scrollTo(0,{immediate:true}) : window.scrollTo(0,0)
   },[pathname,hash])
   return (<>
-    <a href="#main" className="skip">Skip to content</a>
+    <a href="#main" className={cx('skip')}>Skip to content</a>
     <Navbar/>
     <main id="main"><Outlet/></main>
     <Footer/>

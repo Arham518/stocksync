@@ -1,3 +1,4 @@
+import { cx } from '../styles/ui.js'
 import { btn } from '../components/ui/button.js'
 import { Link } from 'react-router-dom'
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell } from 'recharts'
@@ -15,17 +16,17 @@ const aI = { ok:[CheckCircle2,'brand'], warn:[AlertTriangle,'amber'], err:[XCirc
 export default function Dashboard(){
   return (<>
     <PageHead title="Good morning, Acme Supply" sub="Here's what changed in your inventory today.">
-      <Link to="/app/imports" className={btn('primary','sm')}><Upload size={16}/>New Import</Link>
+      <Link to="/app/imports" className={cx(btn('primary','sm'))}><Upload size={16}/>New Import</Link>
     </PageHead>
     <Onboarding/>
-    <div className="stat-grid">
+    <div className={cx('stat-grid')}>
       {stats.map(({k,v,s,I,c})=> (
-        <div key={k} className={`stat card c-${c}`}><div className="stat-top"><span className="stat-ic"><I size={20}/></span><ArrowUpRight size={18} className="stat-go"/></div><p>{k}</p><b>{v}</b><small>{s}</small></div>
+        <div key={k} className={cx(`stat card c-${c}`)}><div className={cx('stat-top')}><span className={cx('stat-ic')}><I size={20}/></span><ArrowUpRight size={18} className={cx('stat-go')}/></div><p>{k}</p><b>{v}</b><small>{s}</small></div>
       ))}
     </div>
-    <div className="dash-grid">
-      <section className="card panel chart-panel" aria-labelledby="ch1">
-        <div className="panel-h"><h2 id="ch1">Inventory updates</h2><div className="legend"><span className="lg brand"/>Updated<span className="lg red"/>Failed</div></div>
+    <div className={cx('dash-grid')}>
+      <section className={cx('card panel chart-panel')} aria-labelledby="ch1">
+        <div className={cx('panel-h')}><h2 id="ch1">Inventory updates</h2><div className={cx('legend')}><span className={cx('lg brand')}/>Updated<span className={cx('lg red')}/>Failed</div></div>
         <div style={{height:260}}>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={trend} margin={{left:-18,right:6,top:10}}>
@@ -40,30 +41,30 @@ export default function Dashboard(){
           </ResponsiveContainer>
         </div>
       </section>
-      <section className="card panel" aria-labelledby="ch2">
-        <div className="panel-h"><h2 id="ch2">Stock health</h2></div>
-        <div className="donut">
+      <section className={cx('card panel')} aria-labelledby="ch2">
+        <div className={cx('panel-h')}><h2 id="ch2">Stock health</h2></div>
+        <div className={cx('donut')}>
           <ResponsiveContainer width="100%" height={190}>
             <PieChart><Pie data={stockMix} dataKey="value" innerRadius={58} outerRadius={84} paddingAngle={3} stroke="none">{stockMix.map(s=> <Cell key={s.name} fill={s.color}/>)}</Pie><Tooltip/></PieChart>
           </ResponsiveContainer>
-          <div className="donut-c"><b>1,248</b><small>products</small></div>
+          <div className={cx('donut-c')}><b>1,248</b><small>products</small></div>
         </div>
-        <ul className="mix">{stockMix.map(s=> <li key={s.name}><span style={{background:s.color}}/>{s.name}<b>{s.value.toLocaleString()}</b></li>)}</ul>
+        <ul className={cx('mix')}>{stockMix.map(s=> <li key={s.name}><span style={{background:s.color}}/>{s.name}<b>{s.value.toLocaleString()}</b></li>)}</ul>
       </section>
-      <section className="card panel" aria-labelledby="ch3">
-        <div className="panel-h"><h2 id="ch3">Recent activity</h2><Link to="/app/history" className="link">View all</Link></div>
-        <ul className="act">{activity.map(a=>{ const [I,c]=aI[a.type]; return <li key={a.t}><span className={`act-ic c-${c}`}><I size={16}/></span><div><b>{a.t}</b><small>{a.d}</small></div><time>{a.time}</time></li> })}</ul>
+      <section className={cx('card panel')} aria-labelledby="ch3">
+        <div className={cx('panel-h')}><h2 id="ch3">Recent activity</h2><Link to="/app/history" className={cx('link')}>View all</Link></div>
+        <ul className={cx('act')}>{activity.map(a=>{ const [I,c]=aI[a.type]; return <li key={a.t}><span className={cx(`act-ic c-${c}`)}><I size={16}/></span><div><b>{a.t}</b><small>{a.d}</small></div><time>{a.time}</time></li> })}</ul>
       </section>
-      <section className="card panel sync-card" aria-labelledby="ch4">
-        <div className="panel-h"><h2 id="ch4">Last sync</h2><Badge kind="ok">Success</Badge></div>
-        <p className="big">2 hours ago</p>
-        <div className="sync-bars"><div><small>Updated</small><b>398</b></div><div><small>Skipped</small><b>12</b></div><div><small>Failed</small><b>2</b></div></div>
-        <div className="progress"><i style={{width:'96%'}}/></div>
-        <Link to="/app/review" className={btn('brand','sm', 'w-full')}>Review pending changes</Link>
+      <section className={cx('card panel sync-card')} aria-labelledby="ch4">
+        <div className={cx('panel-h')}><h2 id="ch4">Last sync</h2><Badge kind="ok">Success</Badge></div>
+        <p className={cx('big')}>2 hours ago</p>
+        <div className={cx('sync-bars')}><div><small>Updated</small><b>398</b></div><div><small>Skipped</small><b>12</b></div><div><small>Failed</small><b>2</b></div></div>
+        <div className={cx('progress')}><i style={{width:'96%'}}/></div>
+        <Link to="/app/review" className={cx(btn('brand','sm', 'w-full'))}>Review pending changes</Link>
       </section>
-      <section className="card panel wide" aria-labelledby="ch5">
-        <div className="panel-h"><h2 id="ch5">Supplier file activity</h2><Link to="/app/suppliers" className="link">Manage suppliers</Link></div>
-        <div className="sup-mini">{suppliers.map(s=> <div key={s.id}><span className="file-ic"><FileSpreadsheet size={18}/></span><div><b>{s.name}</b><small>{s.file} · {s.lastImport}</small></div><Badge kind={s.mapped?'ok':'warn'}>{s.status}</Badge></div>)}</div>
+      <section className={cx('card panel wide')} aria-labelledby="ch5">
+        <div className={cx('panel-h')}><h2 id="ch5">Supplier file activity</h2><Link to="/app/suppliers" className={cx('link')}>Manage suppliers</Link></div>
+        <div className={cx('sup-mini')}>{suppliers.map(s=> <div key={s.id}><span className={cx('file-ic')}><FileSpreadsheet size={18}/></span><div><b>{s.name}</b><small>{s.file} · {s.lastImport}</small></div><Badge kind={s.mapped?'ok':'warn'}>{s.status}</Badge></div>)}</div>
       </section>
     </div>
   </>)
