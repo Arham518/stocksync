@@ -1,0 +1,30 @@
+@import "tailwindcss";
+@import "./global.css" layer(base);
+@import "../app/app.css" layer(components);
+@import "../components/footer.css" layer(components);
+@import "../components/hero-mockup.css" layer(components);
+@import "../components/navbar.css" layer(components);
+@import "../components/sections.css" layer(components);
+@import "../pages/auth.css" layer(components);
+@import "../pages/extra.css" layer(components);
+@import "../pages/forms.css" layer(components);
+@import "../pages/legal.css" layer(components);
+
+@theme {
+  --color-ink: #0b1a14;
+  --color-text: #1d2b25;
+  --color-muted: #5d6d66;
+  --color-line: #e6ece9;
+  --color-line-2: #d7e0dc;
+  --color-soft: #f3f7f5;
+  --color-brand: #0f9d6e;
+  --color-brand-50: #e8f7f0;
+  --color-brand-100: #cdeedf;
+  --color-brand-700: #07704e;
+  --color-mint: #6ee7b7;
+  --font-display: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --shadow-soft: 0 10px 30px -12px rgba(11,26,20,.18), 0 2px 6px rgba(11,26,20,.05);
+  --shadow-deep: 0 40px 80px -30px rgba(11,26,20,.35), 0 10px 30px -10px rgba(11,26,20,.15);
+  --ease-premium: cubic-bezier(.22,1,.36,1);
+}

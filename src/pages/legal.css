@@ -1,0 +1,4 @@
+.legal{max-width:780px;display:grid;gap:28px}
+.legal article{padding-bottom:26px;border-bottom:1px solid var(--line)}
+.legal h2{font-size:22px;margin-bottom:10px}
+.legal p{color:var(--muted)}
