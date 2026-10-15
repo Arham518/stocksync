@@ -1,6 +1,6 @@
 import { cx } from '../styles/ui.js'
 import { useState } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown } from '../components/icons.js'
 import { Link } from 'react-router-dom'
 import { PageHead, Badge, EmptyState } from './ui.jsx'
 import { history } from '../data/mock.js'

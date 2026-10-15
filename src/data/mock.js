@@ -10,7 +10,7 @@ export const products = names.map((n,i)=>{
   return { id:i+1, name:n, sku:`SSP-${(1040+i*7)}`, supplier:suppliers[i%4].name, stock, price:[89,129,54,72,48,36,24,32,164,42,18,28,14,39,96,38][i], status: stock===0?'Out of stock':stock<10?'Low stock':'In stock' }
 })
 export const trend = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((d,i)=>({ d, updated:[182,240,198,310,276,142,208][i], failed:[4,7,2,9,5,1,3][i] }))
-export const stockMix = [ { name:'In stock', value:1096, color:'#0f9d6e' }, { name:'Low stock', value:104, color:'#f59e0b' }, { name:'Out of stock', value:48, color:'#e5484d' } ]
+export const stockMix = [ { name:'In stock', value:1096, color:'#0b7d58' }, { name:'Low stock', value:104, color:'#f59e0b' }, { name:'Out of stock', value:48, color:'#c42b31' } ]
 export const activity = [
   { t:'Supplier import completed', d:'Northline Wholesale · 412 rows parsed', time:'2m ago', type:'ok' },
   { t:'Price changes awaiting review', d:'Coastal Goods Co. · 18 products', time:'26m ago', type:'warn' },

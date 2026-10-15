@@ -1,6 +1,6 @@
 import { cx } from '../styles/ui.js'
 import { useEffect, useRef, useState } from 'react'
-import { Bell, CheckCheck } from 'lucide-react'
+import { Bell, CheckCheck } from '../components/icons.js'
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '../utils/cn.js'
 import { activity } from '../data/mock.js'

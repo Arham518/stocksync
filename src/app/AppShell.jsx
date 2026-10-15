@@ -2,7 +2,7 @@ import { cx } from '../styles/ui.js'
 import { useEffect, useState } from 'react'
 import { NavLink, Routes, Route, useLocation, Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ChevronsLeft, Menu, X, Search, LogOut, Moon, Sun } from 'lucide-react'
+import { ChevronsLeft, Menu, X, Search, LogOut, Moon, Sun } from '../components/icons.js'
 import { appMenu as menu } from './menu.js'
 import CommandPalette from './CommandPalette.jsx'
 import Notifications from './Notifications.jsx'
@@ -25,9 +25,9 @@ export default function AppShell(){
   const Side = ({ mobile }) => (
     <aside className={cx(`side ${collapsed&&!mobile?'collapsed':''} ${mobile?'mobile':''}`)} aria-label="App navigation" id={mobile?'app-drawer':undefined}>
       <div className={cx('side-top')}>
-        {(!collapsed||mobile) ? <Logo light to="/app"/> : <Link to="/app" className={cx('side-mark')} aria-label="Dashboard"><span/></Link>}
+        {(!collapsed||mobile) ? <Logo light to="/app"/> : <Logo light compact to="/app"/>}
         {mobile ? <button className={cx('icon-btn dark')} onClick={()=>setDrawer(false)} aria-label="Close menu"><X size={20}/></button>
-          : <button className={cx('icon-btn dark collapse')} onClick={()=>setCollapsed(c=>!c)} aria-label={collapsed?'Expand sidebar':'Collapse sidebar'} aria-expanded={!collapsed}><ChevronsLeft size={18}/></button>}
+          : <button className={cx('icon-btn dark collapse-toggle')} onClick={()=>setCollapsed(c=>!c)} aria-label={collapsed?'Expand sidebar':'Collapse sidebar'} aria-expanded={!collapsed}><ChevronsLeft size={18}/></button>}
       </div>
       <nav className={cx('side-nav')}>
         <p className={cx('side-label')}>Workspace</p>

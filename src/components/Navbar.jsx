@@ -3,9 +3,9 @@ import { btn } from './ui/button.js'
 import { useEffect, useRef, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { Menu, X, ArrowRight, ChevronDown } from 'lucide-react'
+import { Menu, X, ArrowRight, ChevronDown } from './icons.js'
 import Logo from './Logo.jsx'
-import Icon from './Icon.jsx'
+import Icon, { IconTile } from './Icon.jsx'
 import { menus } from '../data/site.js'
 export default function Navbar(){
   const [scrolled,setScrolled]=useState(false); const [open,setOpen]=useState(false); const [mega,setMega]=useState(null); const [acc,setAcc]=useState(null)
@@ -25,7 +25,7 @@ export default function Navbar(){
               <button className={cx(`nav-link ${mega===m.label?'active':''}`)} aria-expanded={mega===m.label} aria-haspopup="true" onClick={()=>setMega(mega===m.label?null:m.label)}>{m.label}<ChevronDown size={15} className={cx('dd-chev')}/></button>
               <AnimatePresence>{mega===m.label && (
                 <motion.div className={cx(`mega ${m.items.length>5?'two':''}`)} initial={{opacity:0,y:10,scale:.98}} animate={{opacity:1,y:0,scale:1}} exit={{opacity:0,y:6,scale:.98}} transition={{duration:.22,ease:[.22,1,.36,1]}}>
-                  {m.items.map(([h,l,d,ic])=> <Link key={h} to={h} className={cx('mega-item')}><span className={cx('mi-ic')}><Icon name={ic} size={18}/></span><span><b>{l}</b><small>{d}</small></span></Link>)}
+                  {m.items.map(([h,l,d,ic])=> <Link key={h} to={h} className={cx('mega-item group')}><IconTile name={ic} size="sm"/><span><b>{l}</b><small>{d}</small></span></Link>)}
                 </motion.div>)}
               </AnimatePresence>
             </div>

@@ -1,2 +1,2 @@
-import { LayoutDashboard, Upload, Package, Users, GitCompareArrows, History, Settings } from 'lucide-react'
+import { LayoutDashboard, Upload, Package, Users, GitCompareArrows, History, Settings } from '../components/icons.js'
 export const appMenu = [[LayoutDashboard, 'Dashboard', '/app'], [Upload, 'Imports', '/app/imports'], [Package, 'Products', '/app/products'], [Users, 'Suppliers', '/app/suppliers'], [GitCompareArrows, 'Review & Sync', '/app/review'], [History, 'Sync History', '/app/history'], [Settings, 'Settings', '/app/settings']]

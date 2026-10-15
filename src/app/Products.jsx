@@ -1,6 +1,6 @@
 import { cx } from '../styles/ui.js'
 import { useCallback, useMemo, useState } from 'react'
-import { Search, ArrowUpDown, Download, ChevronLeft, ChevronRight } from 'lucide-react'
+import { Search, ArrowUpDown, Download, ChevronLeft, ChevronRight } from '../components/icons.js'
 import { btn } from '../components/ui/button.js'
 import { cn } from '../utils/cn.js'
 import { PageHead, Badge } from './ui.jsx'

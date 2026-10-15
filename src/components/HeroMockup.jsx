@@ -1,6 +1,6 @@
 import { cx } from '../styles/ui.js'
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
-import { CheckCircle2, AlertTriangle, XCircle, LayoutDashboard, Upload, Package, Users, Settings, FileSpreadsheet, ShoppingBag } from 'lucide-react'
+import { CheckCircle2, AlertTriangle, XCircle, LayoutDashboard, Upload, Package, Users, Settings, FileSpreadsheet, Shopify } from './icons.js'
 const rows = [['Wireless Headphones','SPK-001','SPK-001','Matched'],['Smart Watch','SPK-002','SPK-002','Matched'],['Phone Case','SPK-003','—','Missing'],['Charger Cable','SPK-004','SPK-004','Matched'],['Desk Lamp','SPK-005','SPK-005','Price']]
 export default function HeroMockup(){
   const reduce = useReducedMotion()
@@ -31,13 +31,13 @@ export default function HeroMockup(){
           </div>
         </div>
         <motion.div className={cx('hm-float hm-files')} style={{translateZ:80}} animate={reduce?{}:{y:[0,-10,0]}} transition={{duration:5,repeat:Infinity,ease:'easeInOut'}}>
-          <span className={cx('f csv')}><FileSpreadsheet size={16}/>CSV</span><span className={cx('f xls')}><FileSpreadsheet size={16}/>XLSX</span><span className={cx('arrow-line')}/><span className={cx('f shop')}><ShoppingBag size={16}/>Shopify</span>
+          <span className={cx('f csv')}><FileSpreadsheet size={16}/>CSV</span><span className={cx('f xls')}><FileSpreadsheet size={16}/>XLSX</span><span className={cx('arrow-line')}/><span className={cx('f shop')}><Shopify size={16}/>Shopify</span>
         </motion.div>
         <motion.div className={cx('hm-float hm-result')} style={{translateZ:110}} animate={reduce?{}:{y:[0,12,0]}} transition={{duration:6,repeat:Infinity,ease:'easeInOut',delay:.5}}>
           <div className={cx('r-h')}><CheckCircle2 size={16}/>Sync Complete</div>
-          <div className={cx('r-row')}><CheckCircle2 size={14} color="#0f9d6e"/><b>124</b> Updated</div>
+          <div className={cx('r-row')}><CheckCircle2 size={14} color="#0b7d58"/><b>124</b> Updated</div>
           <div className={cx('r-row')}><AlertTriangle size={14} color="#f59e0b"/><b>8</b> Missing</div>
-          <div className={cx('r-row')}><XCircle size={14} color="#e5484d"/><b>3</b> Failed</div>
+          <div className={cx('r-row')}><XCircle size={14} color="#c42b31"/><b>3</b> Failed</div>
         </motion.div>
       </motion.div>
       <div className={cx('hm-glow')} aria-hidden="true"/>

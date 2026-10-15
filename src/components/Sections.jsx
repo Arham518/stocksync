@@ -1,12 +1,13 @@
+import { cn } from '../utils/cn.js'
 import { cx } from '../styles/ui.js'
 import { btn } from './ui/button.js'
 import { useState, createContext, useContext } from 'react'
 export const TopLevel = createContext(false)
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ArrowRight, Check, Plus, ShieldCheck, Clock, Mail, AlertTriangle, CalendarClock, FileSpreadsheet, ArrowLeftRight, Sparkles, TrendingDown, XCircle, Copy } from 'lucide-react'
+import { ArrowRight, Check, Plus, ShieldCheck, Clock, Mail, AlertTriangle, CalendarClock, FileSpreadsheet, ArrowLeftRight, Sparkles, TrendingDown, XCircle, Copy } from './icons.js'
 import Reveal from './Reveal.jsx'
-import Icon from './Icon.jsx'
+import Icon, { IconTile } from './Icon.jsx'
 import HeroMockup from './HeroMockup.jsx'
 import * as C from '../data/content.js'
 
@@ -26,7 +27,6 @@ export function Hero(){
   return (
     <section className={cx('hero')}>
       <div className={cx('hero-bg grid-bg')} aria-hidden="true"/>
-      <div className={cx('hero-orb')} aria-hidden="true"/>
       <div className={cx('wrap hero-in')}>
         <div className={cx('hero-copy')}>
           <Reveal><span className={cx('eyebrow')}>Shopify inventory sync</span></Reveal>
@@ -88,19 +88,28 @@ export function Solution(){
   )
 }
 
+const bento = [
+  'lg:col-span-7 bg-ink text-white border-ink', 'lg:col-span-5', 'lg:col-span-4', 'lg:col-span-4', 'lg:col-span-4',
+  'lg:col-span-12 lg:flex-row lg:items-center lg:gap-10 bg-gold-50 border-gold-200/70',
+]
 export function Features({ head=true }){
   return (
     <section className={cx('section features')} id="features">
       <div className={cx('wrap')}>
         {head && <Head center eyebrow="Features" title="Everything You Need to Manage Inventory Smarter"/>}
-        <div className={cx('feat-grid')}>
-          {C.features.map((f,i)=> (
-            <Reveal key={f.title} delay={(i%3)*.08} className={cx(`feat card tone-${f.tone}`)}>
-              <div className={cx('feat-ic')}><Icon name={f.icon} size={22}/></div>
-              <h3>{f.title}</h3><p>{f.text}</p>
-              <span className={cx('feat-num')} aria-hidden="true">0{i+1}</span>
-            </Reveal>
-          ))}
+        <div className="grid gap-5 lg:grid-cols-12">
+          {C.features.map((f,i)=> {
+            const dark = i===0
+            return (
+              <Reveal key={f.title} delay={(i%3)*.08} className={cn('group relative flex flex-col gap-3 overflow-hidden rounded-3xl border border-line bg-[var(--card)] p-8 transition-all duration-500 ease-premium hover:-translate-y-1.5 hover:shadow-deep', bento[i])}>
+                <IconTile name={f.icon} size={i===0?'lg':'md'} dark={dark} className={i===5?'lg:mb-0':'mb-5'}/>
+                <div className={cn(i===5 && 'lg:max-w-xl')}>
+                  <h3 className={cn('font-serif text-[22px] font-medium', dark && 'text-white text-[28px]')}>{f.title}</h3>
+                  <p className={cn('mt-2 text-[15px] text-muted', dark && 'text-white/75 max-w-md')}>{f.text}</p>
+                </div>
+                <span className={cn('absolute right-6 top-5 font-serif text-sm', dark ? 'text-[#e6d3a8]' : 'text-gold')} aria-hidden="true">0{i+1}</span>
+              </Reveal>
+            )})}
         </div>
       </div>
     </section>
@@ -112,12 +121,16 @@ export function HowItWorks(){
     <section className={cx('section how')} id="how-it-works">
       <div className={cx('wrap')}>
         <Head center eyebrow="How it works" title="Three Simple Steps to Better Inventory Management"/>
-        <div className={cx('how-grid')}>
+        <div className="relative grid gap-12 md:grid-cols-3 md:gap-8">
           {C.steps.map((s,i)=> (
-            <Reveal key={s.title} delay={i*.12} className={cx('how-step')}>
-              <div className={cx('how-ic')}><Icon name={s.icon} size={28}/><span>{i+1}</span></div>
-              <p className={cx('how-k')}>Step {i+1}</p>
-              <h3>{s.title}</h3><p>{s.text}</p>
+            <Reveal key={s.title} delay={i*.12} className={cn('group relative flex flex-col items-center gap-3 px-2 text-center', i===1 && 'md:mt-14')}>
+              <div className="relative mb-2">
+                <IconTile name={s.icon} size="lg" className="!size-16 !rounded-[20px] bg-white"/>
+                <span className="absolute -right-2 -top-2 grid size-6 place-items-center rounded-full bg-ink font-serif text-xs text-[#e6d3a8] ring-4 ring-[var(--bg)]">{i+1}</span>
+              </div>
+              <p className="text-xs font-semibold uppercase tracking-[.18em] text-gold">Step {i+1}</p>
+              <h3 className="font-serif text-2xl font-medium">{s.title}</h3>
+              <p className="max-w-xs text-muted">{s.text}</p>
             </Reveal>
           ))}
         </div>
@@ -230,14 +243,16 @@ export function Pricing({ head=true }){
     <section className={cx('section pricing')} id="pricing">
       <div className={cx('wrap')}>
         {head && <Head center eyebrow="Pricing" title="Choose a Plan That Fits Your Store"/>}
-        <div className={cx('price-grid')}>
+        <div className="grid items-stretch gap-6 md:grid-cols-3 lg:gap-8">
           {C.plans.map((p,i)=> (
-            <Reveal key={p.name} delay={i*.1} className={cx(`plan card ${p.popular?'pop':''}`)}>
-              {p.popular && <span className={cx('pop-badge')}>Most Popular</span>}
-              <h3>{p.name}</h3><p className={cx('plan-sub')}>{p.sub}</p>
-              <div className={cx('plan-price')}>Pricing coming soon</div>
-              <ul className={cx('list')}>{p.items.map(it=> <li key={it}><span className={cx('check')}><Check size={13} strokeWidth={3}/></span>{it}</li>)}</ul>
-              <Link to="/signup" className={cx(btn(p.popular?'brand':'ghost','md','w-full'))}>Get Started</Link>
+            <Reveal key={p.name} delay={i*.1} className={cn('group relative flex flex-col gap-1.5 rounded-3xl border bg-[var(--card)] p-8 transition-all duration-500 ease-premium hover:-translate-y-1.5 hover:shadow-deep',
+              p.popular ? 'border-gold/60 bg-ink text-white/80 shadow-deep md:-my-4 md:py-12' : 'border-line')}>
+              {p.popular && <span className="absolute right-6 top-6 rounded-full bg-gradient-to-r from-[#ecd9a6] to-[#c29b52] px-3 py-1.5 text-xs font-bold text-ink">Most Popular</span>}
+              <h3 className={cn('font-serif text-[26px] font-medium', p.popular && 'text-white')}>{p.name}</h3>
+              <p className={cn('text-sm', p.popular ? 'text-white/70' : 'text-muted')}>{p.sub}</p>
+              <div className={cn('my-5 border-y py-3.5 font-display text-[15px] font-semibold', p.popular ? 'border-white/15 text-white' : 'border-line text-ink')}>Pricing coming soon</div>
+              <ul className={cx('list flex-1 mb-7 text-[15px]')}>{p.items.map(it=> <li key={it}><span className={cn('grid size-[22px] flex-none place-items-center rounded-full', p.popular ? 'bg-white/10 text-[#e6d3a8]' : 'bg-brand-50 text-brand-700')}><Check size={13} strokeWidth={3}/></span>{it}</li>)}</ul>
+              <Link to="/signup" className={cx(btn(p.popular?'gold':'ghost','md','w-full'))}>Get Started</Link>
             </Reveal>
           ))}
         </div>
@@ -275,7 +290,6 @@ export function FinalCta(){
     <section className={cx('final')}>
       <div className={cx('wrap')}>
         <Reveal className={cx('final-box')}>
-          <div className={cx('final-orb')} aria-hidden="true"/>
           <H>Ready to Simplify Your Shopify Inventory?</H>
           <p>Stop spending unnecessary time updating spreadsheets and checking stock manually. Bring supplier data, product matching, and inventory updates into one organized workflow.</p>
           <div className={cx('final-ctas')}>

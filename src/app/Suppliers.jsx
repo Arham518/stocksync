@@ -1,7 +1,7 @@
 import { cx } from '../styles/ui.js'
 import { btn } from '../components/ui/button.js'
 import { useState } from 'react'
-import { FileSpreadsheet, Plus, Save, CheckCircle2, ArrowRight } from 'lucide-react'
+import { FileSpreadsheet, Plus, Save, CheckCircle2, ArrowRight } from '../components/icons.js'
 import { PageHead, Badge, EmptyState } from './ui.jsx'
 import { suppliers as initial } from '../data/mock.js'
 const cols = ['Item Code','SKU','Part #','Product Name','On Hand','Available','Stock','Unit Cost','Wholesale','Price USD']

@@ -2,7 +2,7 @@ import { cx } from '../styles/ui.js'
 import { btn } from '../components/ui/button.js'
 import { Link } from 'react-router-dom'
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, PieChart, Pie, Cell } from 'recharts'
-import { Package, AlertTriangle, XCircle, GitCompareArrows, CheckCircle2, Info, ArrowUpRight, Upload, FileSpreadsheet } from 'lucide-react'
+import { Package, AlertTriangle, XCircle, GitCompareArrows, CheckCircle2, Info, ArrowUpRight, Upload, FileSpreadsheet } from '../components/icons.js'
 import { PageHead, Badge } from './ui.jsx'
 import Onboarding from './Onboarding.jsx'
 import { trend, stockMix, activity, suppliers } from '../data/mock.js'
@@ -30,13 +30,13 @@ export default function Dashboard(){
         <div style={{height:260}}>
           <ResponsiveContainer width="100%" height="100%">
             <AreaChart data={trend} margin={{left:-18,right:6,top:10}}>
-              <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#0f9d6e" stopOpacity=".35"/><stop offset="1" stopColor="#0f9d6e" stopOpacity="0"/></linearGradient></defs>
+              <defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor="#0b7d58" stopOpacity=".35"/><stop offset="1" stopColor="#0b7d58" stopOpacity="0"/></linearGradient></defs>
               <CartesianGrid stroke="#eef2f0" vertical={false}/>
               <XAxis dataKey="d" tickLine={false} axisLine={false} tick={{fill:'#5d6d66',fontSize:12}}/>
               <YAxis tickLine={false} axisLine={false} tick={{fill:'#5d6d66',fontSize:12}}/>
               <Tooltip contentStyle={{borderRadius:12,border:'1px solid #e6ece9',boxShadow:'0 10px 30px -12px rgba(0,0,0,.2)'}}/>
-              <Area type="monotone" dataKey="updated" stroke="#0f9d6e" strokeWidth={2.5} fill="url(#ga)" name="Updated"/>
-              <Area type="monotone" dataKey="failed" stroke="#e5484d" strokeWidth={2} fill="transparent" name="Failed"/>
+              <Area type="monotone" dataKey="updated" stroke="#0b7d58" strokeWidth={2.5} fill="url(#ga)" name="Updated"/>
+              <Area type="monotone" dataKey="failed" stroke="#c42b31" strokeWidth={2} fill="transparent" name="Failed"/>
             </AreaChart>
           </ResponsiveContainer>
         </div>

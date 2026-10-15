@@ -1,6 +1,6 @@
 import { cx } from '../styles/ui.js'
 import { Link, useLocation } from 'react-router-dom'
-import { ArrowRight, ArrowLeft } from 'lucide-react'
+import { ArrowRight, ArrowLeft } from '../components/icons.js'
 import { TopLevel, Problem, Solution, Features, HowItWorks, DashboardPreview, Suppliers, Safety, Automation, Pricing, Faq, FinalCta } from '../components/Sections.jsx'
 import { tour } from '../data/site.js'
 function Pager(){

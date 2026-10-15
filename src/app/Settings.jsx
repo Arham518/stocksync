@@ -1,7 +1,7 @@
 import { cx } from '../styles/ui.js'
 import { btn } from '../components/ui/button.js'
 import { useState } from 'react'
-import { CheckCircle2, Store, UserPlus } from 'lucide-react'
+import { CheckCircle2, Store, UserPlus } from '../components/icons.js'
 import { team } from '../data/mock.js'
 const roles = ['Owner','Admin','Editor','Viewer']
 import { PageHead } from './ui.jsx'

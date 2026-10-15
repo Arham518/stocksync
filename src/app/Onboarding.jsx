@@ -1,7 +1,7 @@
 import { cx } from '../styles/ui.js'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Check, X } from 'lucide-react'
+import { Check, X } from '../components/icons.js'
 import { cn } from '../utils/cn.js'
 
 const steps = [

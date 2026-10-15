@@ -1,31 +1,34 @@
 import { cx } from '../styles/ui.js'
 import { btn } from '../components/ui/button.js'
 import { Link } from 'react-router-dom'
-import { ArrowRight, Check, ShoppingBag, FileSpreadsheet, FileText, Lock, KeyRound, Eye, Trash2, ServerCog, ShieldCheck, Store, TrendingUp, Building2, Circle } from 'lucide-react'
+import { ArrowRight, Check, Shopify, FileSpreadsheet, FileText, Lock, KeyRound, Eye, Trash2, ServerCog, ShieldCheck, Store, TrendingUp, Building2, Circle } from '../components/icons.js'
 import { PageHero, FinalCta } from '../components/Sections.jsx'
 import Reveal from '../components/Reveal.jsx'
+import { IconTile } from '../components/Icon.jsx'
 
 export function Integrations(){
   const items=[
-    { I:ShoppingBag, n:'Shopify', s:'Store connection', d:'Read products and variants, then update inventory quantities and prices through the Shopify Admin API, limited to the permissions you approve. Live store sync is in development; the current demo simulates it.', tag:'Planned' },
+    { I:Shopify, n:'Shopify', s:'Store connection', d:'Read products and variants, then update inventory quantities and prices through the Shopify Admin API, limited to the permissions you approve. Live store sync is in development; the current demo simulates it.', tag:'Planned' },
     { I:FileText, n:'CSV files', s:'Supplier import', d:'Upload comma-separated supplier files. Columns are detected and mapped to SKU, quantity and price.', tag:'Available' },
     { I:FileSpreadsheet, n:'Excel (.xlsx, .xls)', s:'Supplier import', d:'Upload Excel workbooks from suppliers. The first worksheet is read in your browser and goes through the same validation as CSV.', tag:'Available' },
   ]
   return (<>
     <PageHero eyebrow="Integrations" title="Works With the Tools You Already Use" lead="StockSync Pro connects your Shopify store with the supplier files you already receive. No invented integrations — just the ones the workflow needs."/>
-    <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap int-grid')}>
-      {items.map(({I,n,s,d,tag},i)=> <Reveal key={n} delay={i*.08} className={cx('card int')}><div className={cx('int-top')}><span className={cx('int-ic')}><I size={26}/></span><span className={cx(`tagp ${tag==='Available'?'core':''}`)}>{tag}</span></div><small>{s}</small><h2>{n}</h2><p>{d}</p></Reveal>)}
+    <section className={cx('section')} style={{paddingTop:40}}><div className={cx("wrap grid gap-5 lg:grid-cols-2")}>
+      {items.map(({I,n,s,d,tag},i)=> <Reveal key={n} delay={i*.08} className={cx(`card int group ${i===0?'lg:row-span-2 lg:p-10':''}`)}><div className={cx('int-top')}><IconTile as={I} size="lg"/><span className={cx(`tagp ${tag==='Available'?'core':''}`)}>{tag}</span></div><small>{s}</small><h2>{n}</h2><p>{d}</p></Reveal>)}
     </div></section>
     <FinalCta/>
   </>)
 }
 
+const secSpan = ['lg:col-span-7','lg:col-span-5','lg:col-span-5','lg:col-span-7','lg:col-span-6','lg:col-span-6']
+
 export function Security(){
   const items=[[KeyRound,'Least-privilege Shopify access','StockSync Pro requests only the Shopify permissions needed for products and inventory.'],[Eye,'Review before sync','No change reaches your store until you preview and confirm it.'],[ShieldCheck,'Encrypted in transit','All traffic between your browser, StockSync Pro and Shopify uses HTTPS.'],[ServerCog,'Audit trail','Every sync is recorded with updated, skipped and failed products.'],[Trash2,'Your data, your call','Request deletion of uploaded supplier files and history at any time.'],[Lock,'Account protection','Secure password storage and session handling for every account.']]
   return (<>
     <PageHero eyebrow="Security & Data" title="Built Around Control and Transparency" lead="Inventory data runs your business. Here is how StockSync Pro is designed to handle it."/>
-    <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap sec-grid')}>
-      {items.map(([I,t,d],i)=> <Reveal key={t} delay={(i%3)*.08} className={cx('card secc')}><span className={cx('int-ic')}><I size={22}/></span><h2>{t}</h2><p>{d}</p></Reveal>)}
+    <section className={cx('section')} style={{paddingTop:40}}><div className={cx("wrap grid gap-5 lg:grid-cols-12")}>
+      {items.map(([I,t,d],i)=> <Reveal key={t} delay={(i%3)*.08} className={cx(`card secc group ${secSpan[i]} ${i===0?'!bg-ink !border-ink [&_h2]:!text-white [&_p]:!text-white/75':''}`)}><IconTile as={I} dark={i===0}/><h2>{t}</h2><p>{d}</p></Reveal>)}
     </div>
     <div className={cx('wrap')}><p className={cx('note')} style={{marginTop:28}}>These are design principles for a product in development, not third-party certifications.</p></div></section>
     <FinalCta/>
@@ -43,7 +46,7 @@ export function UseCases(){
     <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap uc-list')}>
       {cases.map(({id,I,t,s,p,b,plan},i)=> (
         <Reveal key={id} className={cx(`uc card ${i%2?'alt':''}`)} id={id}>
-          <div className={cx('uc-l')}><span className={cx('int-ic')}><I size={26}/></span><small>{s}</small><h2>{t}</h2><p>{p}</p><Link to="/pricing" className={cx(btn('ghost','sm'))}>See the {plan} plan <ArrowRight size={16} className={cx('arrow')}/></Link></div>
+          <div className={cx('uc-l')}><IconTile as={I} size="lg" dark={i%2===1}/><small>{s}</small><h2>{t}</h2><p>{p}</p><Link to="/pricing" className={cx(btn('ghost','sm'))}>See the {plan} plan <ArrowRight size={16} className={cx('arrow')}/></Link></div>
           <ul className={cx('list uc-r')}>{b.map(x=> <li key={x}><span className={cx('check')}><Check size={13} strokeWidth={3}/></span>{x}</li>)}</ul>
         </Reveal>
       ))}

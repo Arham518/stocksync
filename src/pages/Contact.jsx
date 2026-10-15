@@ -1,7 +1,7 @@
 import { cx } from '../styles/ui.js'
 import { btn } from '../components/ui/button.js'
 import { useState } from 'react'
-import { Mail, MessageSquare, CheckCircle2, Send } from 'lucide-react'
+import { Mail, MessageSquare, CheckCircle2, Send } from '../components/icons.js'
 import { PageHero } from '../components/Sections.jsx'
 import Reveal from '../components/Reveal.jsx'
 const init = { name:'', email:'', company:'', topic:'General question', message:'' }

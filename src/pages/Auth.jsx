@@ -3,7 +3,7 @@ import { btn } from '../components/ui/button.js'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Eye, EyeOff, CheckCircle2 } from 'lucide-react'
+import { ArrowRight, Eye, EyeOff, CheckCircle2 } from '../components/icons.js'
 import Logo from '../components/Logo.jsx'
 export default function Auth({ mode }){
   const signup = mode==='signup'; const nav = useNavigate()
