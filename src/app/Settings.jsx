@@ -17,18 +17,18 @@ export default function Settings(){
     <PageHead title="Settings" sub="Store connection, sync rules and notifications."/>
     <div className={cx('set-grid')}>
       <section className={cx('card panel')}><div className={cx('panel-h')}><h2>Shopify store</h2></div>
-        <div className={cx('store')}><span className={cx('file-ic')}><Store size={20}/></span><div><b>acme-supply.myshopify.com</b><small>Connected · inventory & product permissions</small></div><span className={cx('badge b-ok')}>Connected</span></div>
+        <div className={cx('store')}><span className={cx('file-ic')}><Store size={20}/></span><div><b>acme-supply.myshopify.com</b><small>Demo store · live Shopify connection coming soon</small></div><span className={cx('badge b-warn')}>Not connected</span></div>
         <div className={cx('field')} style={{marginTop:18}}><label htmlFor="th">Low-stock threshold</label><input id="th" type="number" min="0" value={th} onChange={e=>{setTh(e.target.value);setSaved(false)}}/></div>
       </section>
       <section className={cx('card panel')}><div className={cx('panel-h')}><h2>Sync rules</h2></div>
         <Toggle id="t1" label="Require review before sync" hint="Recommended. Preview every change first." on={t.review} set={s('review')}/>
         <Toggle id="t2" label="Apply price changes" hint="Off by default. Prices are previewed separately." on={t.price} set={s('price')}/>
-        <Toggle id="t3" label="Scheduled synchronization" hint="Requires supported data sources and Shopify API permissions." on={t.schedule} set={s('schedule')}/>
+        <Toggle id="t3" label="Scheduled synchronization" hint="Coming soon. Requires supported data sources and Shopify API permissions." on={t.schedule} set={s('schedule')}/>
       </section>
       <section className={cx('card panel')}><div className={cx('panel-h')}><h2>Notifications</h2></div>
-        <Toggle id="t4" label="Low-stock notifications" hint="Email when products fall below threshold." on={t.lowstock} set={s('lowstock')}/>
-        <Toggle id="t5" label="Import and sync failure alerts" hint="Email when a file or sync fails." on={t.fail} set={s('fail')}/>
-        <Toggle id="t6" label="Automated update summaries" hint="Daily summary of inventory changes." on={t.summary} set={s('summary')}/>
+        <Toggle id="t4" label="Low-stock notifications" hint="Coming soon. Email when products fall below threshold." on={t.lowstock} set={s('lowstock')}/>
+        <Toggle id="t5" label="Import and sync failure alerts" hint="Coming soon. Email when a file or sync fails." on={t.fail} set={s('fail')}/>
+        <Toggle id="t6" label="Automated update summaries" hint="Coming soon. Daily summary of inventory changes." on={t.summary} set={s('summary')}/>
       </section>
     </div>
     <section className={cx('card panel mt-5')} aria-labelledby="tm">

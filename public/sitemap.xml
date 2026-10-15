@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Placeholder domain: replace https://stocksync-pro.example.com with the real domain before launch. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://stocksync-pro.example.com/</loc></url>
+  <url><loc>https://stocksync-pro.example.com/why-stocksync</loc></url>
+  <url><loc>https://stocksync-pro.example.com/workflow</loc></url>
+  <url><loc>https://stocksync-pro.example.com/features</loc></url>
+  <url><loc>https://stocksync-pro.example.com/how-it-works</loc></url>
+  <url><loc>https://stocksync-pro.example.com/product-tour</loc></url>
+  <url><loc>https://stocksync-pro.example.com/suppliers-management</loc></url>
+  <url><loc>https://stocksync-pro.example.com/review-first</loc></url>
+  <url><loc>https://stocksync-pro.example.com/automation</loc></url>
+  <url><loc>https://stocksync-pro.example.com/pricing</loc></url>
+  <url><loc>https://stocksync-pro.example.com/faq</loc></url>
+  <url><loc>https://stocksync-pro.example.com/get-started</loc></url>
+  <url><loc>https://stocksync-pro.example.com/integrations</loc></url>
+  <url><loc>https://stocksync-pro.example.com/security</loc></url>
+  <url><loc>https://stocksync-pro.example.com/use-cases</loc></url>
+  <url><loc>https://stocksync-pro.example.com/roadmap</loc></url>
+  <url><loc>https://stocksync-pro.example.com/docs</loc></url>
+  <url><loc>https://stocksync-pro.example.com/about</loc></url>
+  <url><loc>https://stocksync-pro.example.com/contact</loc></url>
+  <url><loc>https://stocksync-pro.example.com/privacy</loc></url>
+  <url><loc>https://stocksync-pro.example.com/terms</loc></url>
+</urlset>

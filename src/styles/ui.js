@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge'
 // Tailwind utility recipes for every UI part, applied with cx('part other-part').
 // Each part also gets an `ss-<part>` marker so state/context variants like [.ss-on_&] can target it.
 export const ui = {
@@ -318,7 +319,12 @@ export const ui = {
 
 /** State/context markers referenced by variants above (e.g. on, active, collapsed). */
 const markers = new Set(["active", "alt", "auto-copy", "brand", "center", "collapsed", "core", "csv", "dark", "done", "drag", "dup", "gs", "in", "is-collapsed", "is-scrolled", "matched", "missing", "next", "ok", "pop", "price", "red", "rev", "shop", "sq", "strong", "top", "two", "xls"])
-const resolve = s => s.split(/\s+/).filter(Boolean).map(t => (ui[t] !== undefined ? `ss-${t} ${ui[t]}` : markers.has(t) ? `ss-${t}` : t)).join(' ')
+const resolve = s => {
+  const tokens = s.split(/\s+/).filter(Boolean)
+  const out = tokens.map(t => (ui[t] !== undefined ? `ss-${t} ${ui[t]}` : markers.has(t) ? `ss-${t}` : t)).join(' ')
+  // raw utilities mixed with a recipe (e.g. 'alert mt-0') must win over the recipe's own values
+  return tokens.some(t => ui[t] !== undefined) && tokens.some(t => ui[t] === undefined && !markers.has(t)) ? twMerge(out) : out
+}
 /** Map semantic part names to Tailwind utilities; unknown tokens (raw utilities) pass through. Supports NavLink's function className. */
 export function cx(...parts) {
   if (typeof parts[0] === 'function') { const fn = parts[0]; return state => cx(fn(state)) }

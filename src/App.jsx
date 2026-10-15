@@ -1,5 +1,6 @@
-import { lazy, Suspense, useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import { useSeo } from './hooks/useSeo.js'
 import SiteLayout from './components/SiteLayout.jsx'
 import Home from './pages/Home.jsx'
 import { ProblemPage, WorkflowPage, FeaturesPage, HowPage, TourPage, SuppliersPage, SafetyPage, AutomationPage, PricingPage, FaqPage, GetStartedPage } from './pages/SectionPages.jsx'
@@ -10,18 +11,10 @@ import Auth from './pages/Auth.jsx'
 import NotFound from './pages/NotFound.jsx'
 const AppShell = lazy(()=>import('./app/AppShell.jsx'))
 
-const titles = { '/':'StockSync Pro — Shopify Inventory Sync', '/features':'Features', '/how-it-works':'How It Works', '/pricing':'Pricing', '/faq':'FAQ', '/contact':'Contact', '/privacy':'Privacy Policy', '/terms':'Terms of Service', '/why-stocksync':'Why StockSync', '/workflow':'Workflow', '/product-tour':'Product Tour', '/suppliers-management':'Supplier Management', '/review-first':'Review First', '/automation':'Automation', '/get-started':'Get Started', '/integrations':'Integrations', '/security':'Security & Data', '/use-cases':'Use Cases', '/roadmap':'Roadmap', '/docs':'Help Center', '/about':'About', '/login':'Log in', '/signup':'Get Started Free' }
-function TitleSync(){
-  const { pathname } = useLocation()
-  useEffect(()=>{
-    const t = titles[pathname]
-    document.title = pathname==='/' ? titles['/'] : t ? `${t} · StockSync Pro` : pathname.startsWith('/app') ? 'Dashboard · StockSync Pro' : 'StockSync Pro'
-  },[pathname])
-  return null
-}
+function Seo(){ useSeo(); return null }
 export default function App(){
   return (<>
-    <TitleSync/>
+    <Seo/>
     <Routes>
       <Route element={<SiteLayout/>}>
         <Route index element={<Home/>}/>

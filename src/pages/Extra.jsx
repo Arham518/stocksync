@@ -7,14 +7,14 @@ import Reveal from '../components/Reveal.jsx'
 
 export function Integrations(){
   const items=[
-    { I:ShoppingBag, n:'Shopify', s:'Store connection', d:'Read products and variants, then update inventory quantities and prices through the Shopify Admin API, limited to the permissions you approve.', tag:'Core' },
-    { I:FileText, n:'CSV files', s:'Supplier import', d:'Upload comma-separated supplier files. Columns are detected and mapped to SKU, quantity and price.', tag:'Core' },
-    { I:FileSpreadsheet, n:'Excel (.xlsx)', s:'Supplier import', d:'Upload Excel workbooks from suppliers, subject to file structure and validation requirements.', tag:'Planned' },
+    { I:ShoppingBag, n:'Shopify', s:'Store connection', d:'Read products and variants, then update inventory quantities and prices through the Shopify Admin API, limited to the permissions you approve. Live store sync is in development; the current demo simulates it.', tag:'Planned' },
+    { I:FileText, n:'CSV files', s:'Supplier import', d:'Upload comma-separated supplier files. Columns are detected and mapped to SKU, quantity and price.', tag:'Available' },
+    { I:FileSpreadsheet, n:'Excel (.xlsx, .xls)', s:'Supplier import', d:'Upload Excel workbooks from suppliers. The first worksheet is read in your browser and goes through the same validation as CSV.', tag:'Available' },
   ]
   return (<>
     <PageHero eyebrow="Integrations" title="Works With the Tools You Already Use" lead="StockSync Pro connects your Shopify store with the supplier files you already receive. No invented integrations — just the ones the workflow needs."/>
     <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap int-grid')}>
-      {items.map(({I,n,s,d,tag},i)=> <Reveal key={n} delay={i*.08} className={cx('card int')}><div className={cx('int-top')}><span className={cx('int-ic')}><I size={26}/></span><span className={cx(`tagp ${tag==='Core'?'core':''}`)}>{tag}</span></div><small>{s}</small><h2>{n}</h2><p>{d}</p></Reveal>)}
+      {items.map(({I,n,s,d,tag},i)=> <Reveal key={n} delay={i*.08} className={cx('card int')}><div className={cx('int-top')}><span className={cx('int-ic')}><I size={26}/></span><span className={cx(`tagp ${tag==='Available'?'core':''}`)}>{tag}</span></div><small>{s}</small><h2>{n}</h2><p>{d}</p></Reveal>)}
     </div></section>
     <FinalCta/>
   </>)
@@ -53,7 +53,7 @@ export function UseCases(){
 }
 
 export function Roadmap(){
-  const cols=[['Now','In development',['CSV supplier imports','SKU matching with Shopify variants','Review & sync workflow','Sync history reports']],['Next','Planned',['Excel (.xlsx) imports','Saved supplier column mappings','Low-stock email alerts','Price synchronization controls']],['Later','Exploring',['Scheduled synchronization','Multi-store management for agencies','Team roles and permissions','Automated update summaries']]]
+  const cols=[['Now','Available in the demo',['CSV and Excel supplier imports','SKU matching and validation','Review workflow with simulated sync','Manual column mapping']],['Next','Planned',['Live Shopify store connection','Saved supplier column mappings','Low-stock email alerts','Sync history from real runs']],['Later','Exploring',['Scheduled synchronization','Multi-store management for agencies','Team roles and permissions','Automated update summaries']]]
   return (<>
     <PageHero eyebrow="Roadmap" title="What We're Building" lead="StockSync Pro is in active development. This roadmap shows planned work — it is not a list of past releases, and priorities may change."/>
     <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap rm-grid')}>
@@ -66,7 +66,7 @@ export function Roadmap(){
 export function Docs(){
   const steps=[
     ['Create your account','Sign up and open the dashboard. You can explore every screen before connecting a store.'],
-    ['Connect your Shopify store','Approve the product and inventory permissions StockSync Pro needs. Nothing else is requested.'],
+    ['Connect your Shopify store (planned)','Live store connection is in development. Today the demo compares files with a sample catalog.'],
     ['Add a supplier profile','Go to Suppliers, add a supplier and name it the way your team knows it.'],
     ['Map columns','Choose which supplier columns hold SKU, quantity and price. The mapping is reused on every future import.'],
     ['Upload a supplier file','Open Imports and upload a CSV. StockSync Pro checks rows, duplicate SKUs and invalid quantities.'],

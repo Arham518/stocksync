@@ -46,7 +46,7 @@ export default function Products() {
               <td className={cx('r')}>{p.stock}</td><td className={cx('r')}>${p.price.toFixed(2)}</td>
               <td><Badge kind={kind[p.status]}>{p.status}</Badge></td>
             </tr>))}
-          {!t.view.length && <tr><td colSpan={6} className={cx('empty')}>No products match your search.</td></tr>}
+          {!t.view.length && <tr><td colSpan={6} className={cx('empty')}>No products match “{q}” in {tab}. Try another search or the All tab.</td></tr>}
         </tbody>
       </table></div>
       <div className={cx('mt-4 flex items-center justify-between gap-3 text-sm text-muted')}>

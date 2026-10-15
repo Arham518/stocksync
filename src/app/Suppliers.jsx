@@ -2,7 +2,7 @@ import { cx } from '../styles/ui.js'
 import { btn } from '../components/ui/button.js'
 import { useState } from 'react'
 import { FileSpreadsheet, Plus, Save, CheckCircle2, ArrowRight } from 'lucide-react'
-import { PageHead, Badge } from './ui.jsx'
+import { PageHead, Badge, EmptyState } from './ui.jsx'
 import { suppliers as initial } from '../data/mock.js'
 const cols = ['Item Code','SKU','Part #','Product Name','On Hand','Available','Stock','Unit Cost','Wholesale','Price USD']
 export default function Suppliers(){
@@ -10,7 +10,8 @@ export default function Suppliers(){
   const s = list.find(x=>x.id===sel)
   const setMap = (k,v) => { setSaved(false); setList(list.map(x=>x.id===sel?{...x,map:{...x.map,[k]:v}}:x)) }
   const save = () => { setList(list.map(x=>x.id===sel?{...x,mapped:!!(x.map.sku&&x.map.qty&&x.map.price),status:(x.map.sku&&x.map.qty&&x.map.price)?'Active':'Needs mapping'}:x)); setSaved(true) }
-  const complete = s.map.sku && s.map.qty && s.map.price
+  const complete = s?.map.sku && s?.map.qty && s?.map.price
+  if (!s) return (<><PageHead title="Suppliers"/><EmptyState title="No suppliers yet">Add a supplier to save its column mapping for future imports.</EmptyState></>)
   return (<>
     <PageHead title="Suppliers" sub="Separate profiles with reusable column mappings."><button className={cx(btn('primary','sm'))}><Plus size={16}/>Add supplier</button></PageHead>
     <div className={cx('sup-grid')}>

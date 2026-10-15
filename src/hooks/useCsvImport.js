@@ -1,37 +1,42 @@
 import { useCallback, useMemo, useState } from 'react'
-import Papa from 'papaparse'
 import { buildDiff, countBy, detectColumns } from '../utils/sku.js'
+import { parseCsvText, parseFile } from '../utils/parseFile.js'
 import { products } from '../data/mock.js'
 
-const MAX = 5 * 1024 * 1024
 export const DIFF_KEY = 'ssp:diff'
+const EMPTY = { file: null, rows: [], fields: [], error: '', status: 'idle' }
 
+/** Supplier file import: parse (CSV/Excel) → column mapping → diff against the catalog. */
 export function useCsvImport() {
-  const [state, setState] = useState({ file: null, rows: [], fields: [], error: '' })
+  const [state, setState] = useState(EMPTY)
+  const [mapping, setMapping] = useState(null)
 
-  const parseText = useCallback((text, name, size) => {
-    const res = Papa.parse(text, { header: true, skipEmptyLines: true })
-    if (!res.meta.fields?.length || !res.data.length)
-      return setState(s => ({ ...s, error: 'No rows found. Make sure the first row contains column headers.' }))
-    setState({ file: { name, size }, rows: res.data, fields: res.meta.fields, error: '' })
+  const accept = useCallback((parsed, file) => {
+    setState({ ...EMPTY, ...parsed, file, status: 'parsed' })
+    setMapping(detectColumns(parsed.fields))
   }, [])
+  const fail = useCallback((file, error) => { setState({ ...EMPTY, file, error, status: 'error' }); setMapping(null) }, [])
 
-  const loadFile = useCallback(file => {
+  const loadFile = useCallback(async file => {
     if (!file) return
-    const fail = error => setState(s => ({ ...s, error }))
-    if (/\.xlsx?$/i.test(file.name)) return fail('Excel preview is planned. Please export the sheet as CSV for now.')
-    if (!/\.(csv|txt)$/i.test(file.name)) return fail('Unsupported file. Please upload a .csv file.')
-    if (file.size > MAX) return fail('File is larger than 5 MB.')
-    file.text().then(t => parseText(t, file.name, file.size))
-  }, [parseText])
+    const meta = { name: file.name, size: file.size }
+    setState({ ...EMPTY, file: meta, status: 'parsing' })
+    try { accept(await parseFile(file), meta) } catch (e) { fail(meta, e.message) }
+  }, [accept, fail])
 
-  const reset = useCallback(() => setState({ file: null, rows: [], fields: [], error: '' }), [])
+  const loadText = useCallback((text, name) => {
+    const meta = { name, size: text.length }
+    try { accept(parseCsvText(text), meta) } catch (e) { fail(meta, e.message) }
+  }, [accept, fail])
 
-  const cols = useMemo(() => detectColumns(state.fields), [state.fields])
-  const diff = useMemo(() => (cols.sku && cols.qty ? buildDiff(state.rows, cols, products) : []), [state.rows, cols])
+  const reset = useCallback(() => { setState(EMPTY); setMapping(null) }, [])
+  const setColumn = useCallback((key, value) => setMapping(m => ({ ...m, [key]: value || undefined, certain: true })), [])
+
+  const ready = Boolean(mapping?.sku && mapping?.qty)
+  const diff = useMemo(() => (ready ? buildDiff(state.rows, mapping, products) : []), [ready, state.rows, mapping])
   const counts = useMemo(() => countBy(diff, 'flag'), [diff])
 
   const saveForReview = useCallback(() => sessionStorage.setItem(DIFF_KEY, JSON.stringify({ file: state.file?.name, diff })), [diff, state.file])
 
-  return { ...state, cols, diff, counts, parseText, loadFile, reset, saveForReview }
+  return { ...state, mapping, setColumn, ready, diff, counts, loadFile, loadText, reset, saveForReview }
 }

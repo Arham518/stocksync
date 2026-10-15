@@ -15,7 +15,7 @@ const stats = [
 const aI = { ok:[CheckCircle2,'brand'], warn:[AlertTriangle,'amber'], err:[XCircle,'red'], info:[Info,'blue'] }
 export default function Dashboard(){
   return (<>
-    <PageHead title="Good morning, Acme Supply" sub="Here's what changed in your inventory today.">
+    <PageHead title="Good morning, Acme Supply" sub="Sample data shown for demonstration.">
       <Link to="/app/imports" className={cx(btn('primary','sm'))}><Upload size={16}/>New Import</Link>
     </PageHead>
     <Onboarding/>

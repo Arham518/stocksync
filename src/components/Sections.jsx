@@ -40,6 +40,7 @@ export function Hero(){
             <Link to="/features" className={cx(btn('ghost','md'))}>Explore Features</Link>
           </Reveal>
           <Reveal delay={.5}><p className={cx('hero-trust')}><ShieldCheck size={18}/>Smarter inventory management for growing Shopify businesses.</p></Reveal>
+          <Reveal delay={.55}><p className="text-[13px] text-muted">Early-access demo: file import and review work today; live Shopify sync is in development.</p></Reveal>
         </div>
         <div className={cx('hero-visual')}><HeroMockup/></div>
       </div>
@@ -210,7 +211,7 @@ export function Automation(){
       <div className={cx('wrap')}>
         <div className={cx('auto-box')}>
           <div className={cx('auto-copy')}>
-            <Head eyebrow="Automation" title="Spend Less Time on Repetitive Inventory Tasks" lead="Move beyond manual file uploads as your workflow grows."/>
+            <Head eyebrow="Automation · Coming soon" title="Spend Less Time on Repetitive Inventory Tasks" lead="Move beyond manual file uploads as your workflow grows."/>
             <Reveal><p className={cx('auto-p')}>With supported supplier formats and properly configured integrations, you can schedule recurring synchronization, receive email notifications, and monitor inventory updates automatically.</p></Reveal>
             <Reveal className={cx('mt')}><Link to="/automation" className={cx(btn('light','md'))}>Explore Automation <ArrowRight size={18} className={cx('arrow')}/></Link></Reveal>
             <p className={cx('auto-note')}>Scheduled syncing requires supported data sources and appropriate Shopify API permissions.</p>

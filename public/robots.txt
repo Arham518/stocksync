@@ -1,0 +1,6 @@
+# Placeholder domain — update the Sitemap URL before launch.
+User-agent: *
+Allow: /
+Disallow: /app
+
+Sitemap: https://stocksync-pro.example.com/sitemap.xml

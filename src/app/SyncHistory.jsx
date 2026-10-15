@@ -1,13 +1,15 @@
 import { cx } from '../styles/ui.js'
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
-import { PageHead, Badge } from './ui.jsx'
+import { Link } from 'react-router-dom'
+import { PageHead, Badge, EmptyState } from './ui.jsx'
 import { history } from '../data/mock.js'
 export default function SyncHistory(){
   const [open,setOpen]=useState(null)
   const k = s => s==='Completed'?'ok':s==='Partial'?'warn':'err'
+  if (!history.length) return (<><PageHead title="Sync History"/><EmptyState title="No syncs yet">Run a review from <Link to="/app/imports" className={cx('link')}>Imports</Link> and the report will appear here.</EmptyState></>)
   return (<>
-    <PageHead title="Sync History" sub="Completed updates, failed records and previous inventory changes."/>
+    <PageHead title="Sync History" sub="Sample history · completed updates, failed records and previous inventory changes."/>
     <div className={cx('hist')}>
       {history.map(h=>{ const on=open===h.id; const total=h.updated+h.failed+h.skipped||1; return (
         <div key={h.id} className={cx(`card hist-item ${on?'on':''}`)}>

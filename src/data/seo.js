@@ -1,0 +1,28 @@
+// Unique <title> and meta description per route. SITE_URL is a placeholder until a real domain exists.
+export const SITE_URL = 'https://stocksync-pro.example.com'
+export const SEO = {
+  '/': ['StockSync Pro — Shopify Inventory Sync from Supplier Spreadsheets', 'Upload supplier CSV or Excel files, match SKUs, and review stock and price changes before they reach your Shopify store.'],
+  '/why-stocksync': ['Why StockSync Pro', 'Spreadsheet-based inventory updates waste time and cause stock and pricing errors. See how StockSync Pro helps.'],
+  '/workflow': ['Workflow', 'From supplier spreadsheet to Shopify: upload, match SKUs, review changes, confirm and check results.'],
+  '/features': ['Features', 'Smart SKU matching, bulk inventory updates, price review, multi-supplier management, low-stock alerts and sync history.'],
+  '/how-it-works': ['How It Works', 'Three steps: import your supplier data, review every change, then sync your store.'],
+  '/product-tour': ['Product Tour', 'Your inventory workflow at a glance: products tracked, low stock, pending changes and last sync status.'],
+  '/suppliers-management': ['Supplier Management', 'Separate supplier profiles with reusable SKU, quantity and price column mappings.'],
+  '/review-first': ['Review First', 'Preview changes, flag duplicate SKUs and invalid quantities, and stay in control of what changes in your store.'],
+  '/automation': ['Automation (Coming Soon)', 'Planned scheduled synchronization, low-stock notifications and failure alerts for supported data sources.'],
+  '/pricing': ['Pricing', 'Starter, Professional and Agency plans. Pricing and usage limits will be announced once plans are finalized.'],
+  '/faq': ['FAQ', 'Answers about supported file formats, SKU matching, bulk updates, automation and price synchronization.'],
+  '/get-started': ['Get Started', 'Bring supplier data, product matching and inventory updates into one organized workflow.'],
+  '/integrations': ['Integrations', 'CSV and Excel supplier imports today; live Shopify store connection in development.'],
+  '/security': ['Security & Data', 'How StockSync Pro is designed to handle your inventory data: least-privilege access and review before sync.'],
+  '/use-cases': ['Use Cases', 'How small stores, growing brands and agencies manage supplier inventory with StockSync Pro.'],
+  '/roadmap': ['Roadmap', 'What is available in the demo today and what is planned next for StockSync Pro.'],
+  '/docs': ['Help Center — Getting Started', 'Step-by-step guide from your first supplier file to reviewing your first sync.'],
+  '/about': ['About', 'Why we are building StockSync Pro: less manual work and better inventory control for Shopify merchants.'],
+  '/contact': ['Contact', 'Questions about StockSync Pro, supplier file formats or plans? Send us a message.'],
+  '/privacy': ['Privacy Policy', 'How StockSync Pro collects and uses information.'],
+  '/terms': ['Terms of Service', 'Terms for using StockSync Pro.'],
+  '/login': ['Demo Access', 'Open the StockSync Pro demo dashboard. No account is created.'],
+  '/signup': ['Try the Demo', 'Explore StockSync Pro with sample data. No account is created.'],
+  '/app': ['Dashboard (Demo)', 'StockSync Pro demo dashboard with sample data.'],
+}
