@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 Disallow: /app
 
-Sitemap: https://stocksync-pro.example.com/sitemap.xml
+Sitemap: https://tradematrix.example.com/sitemap.xml

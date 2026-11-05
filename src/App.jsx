@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import { useSeo } from './hooks/useSeo.js'
 import SiteLayout from './components/SiteLayout.jsx'
 import Home from './pages/Home.jsx'
@@ -18,7 +18,8 @@ export default function App(){
     <Routes>
       <Route element={<SiteLayout/>}>
         <Route index element={<Home/>}/>
-        <Route path="why-stocksync" element={<ProblemPage/>}/>
+        <Route path="why-tradematrix" element={<ProblemPage/>}/>
+        <Route path="why-stocksync" element={<Navigate to="/why-tradematrix" replace/>}/>
         <Route path="workflow" element={<WorkflowPage/>}/>
         <Route path="features" element={<FeaturesPage/>}/>
         <Route path="product-tour" element={<TourPage/>}/>

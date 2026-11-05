@@ -10,12 +10,12 @@ const Doc = ({ eyebrow, title, sections }) => (<>
 export const Privacy = () => <Doc eyebrow="Legal" title="Privacy Policy" sections={[
   ['Information we collect','Account details you provide (name, email, store name) and the supplier files you upload for processing.'],
   ['How we use information','To match SKUs, prepare inventory updates for your review, run synchronizations you confirm, and send notifications you enable.'],
-  ['Shopify data','StockSync Pro only accesses the Shopify data allowed by the API permissions you grant, and only to perform inventory and price updates.'],
+  ['Shopify data','TradeMatrix only accesses the Shopify data allowed by the API permissions you grant, and only to perform inventory and price updates.'],
   ['Data retention','Uploaded files and sync history are kept so you can review previous updates. You can request deletion at any time.'],
   ['Contact','Questions about privacy can be sent through the Contact page.'],
 ]}/>
 export const Terms = () => <Doc eyebrow="Legal" title="Terms of Service" sections={[
-  ['Using StockSync Pro','You are responsible for the supplier files you upload and for reviewing changes before confirming a synchronization.'],
+  ['Using TradeMatrix','You are responsible for the supplier files you upload and for reviewing changes before confirming a synchronization.'],
   ['Accounts','Keep your login details secure. You are responsible for activity on your account.'],
   ['Shopify integration','Synchronization depends on Shopify API availability, permissions and platform limits.'],
   ['Plans','Pricing and usage limits will be announced once plans are finalized.'],

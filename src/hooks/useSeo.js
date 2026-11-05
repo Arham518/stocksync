@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { SEO, SITE_URL } from '../data/seo.js'
 
-const BRAND = 'StockSync Pro'
+const BRAND = 'TradeMatrix'
 const setMeta = (attr, key, content) => {
   let el = document.head.querySelector(`meta[${attr}="${key}"]`)
   if (!el) { el = document.createElement("meta"); el.setAttribute(attr, key); document.head.append(el) }

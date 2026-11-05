@@ -17,7 +17,7 @@ export default function Contact(){
   }
   const F = ({ id, label, children }) => (<div className={cx(`field ${err[id]?'has-err':''}`)}><label htmlFor={id}>{label}</label>{children}{err[id] && <p className={cx('err')} id={`${id}-err`} role="alert">{err[id]}</p>}</div>)
   return (<>
-    <PageHero eyebrow="Contact" title="Let's Talk Inventory" lead="Questions about StockSync Pro, supplier formats or plans? Send a message and the team will get back to you."/>
+    <PageHero eyebrow="Contact" title="Let's Talk Inventory" lead="Questions about TradeMatrix, supplier formats or plans? Send a message and the team will get back to you."/>
     <section className={cx('section')} style={{paddingTop:40}}>
       <div className={cx('wrap contact-grid')}>
         <Reveal className={cx('contact-side')}>

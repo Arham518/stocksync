@@ -1,4 +1,4 @@
-# StockSync Pro
+# TradeMatrix
 
 An early-access **demo** of a SaaS tool that turns supplier spreadsheets into reviewable Shopify inventory updates.
 Marketing site + app dashboard built with **React 18, Vite 5, JavaScript and Tailwind CSS v4**.
@@ -78,13 +78,13 @@ src/
   hooks/       useCsvImport, useTable, useSeo
   utils/       sku.js (matching/validation), parseFile.js (CSV/Excel), csv export, cn()
   styles/      index.css (Tailwind + tokens), ui.js (Tailwind class recipes + cx())
-public/        favicon, og-image.png, robots.txt, sitemap.xml, sample-supplier.csv
+public/        logo.mp4 (looping logo animation), favicons, og-image.png, robots.txt, sitemap.xml, sample-supplier.csv
 ```
 
 ## SEO
 
 Each route sets a unique `<title>`, meta description and Open Graph tags (`src/hooks/useSeo.js`, `src/data/seo.js`).
-`robots.txt`, `sitemap.xml` and the `og:image` URL use the **placeholder domain `stocksync-pro.example.com`** — replace it before deploying.
+`robots.txt`, `sitemap.xml` and the `og:image` URL use the **placeholder domain `tradematrix.example.com`** — replace it before deploying.
 
 ## Known limitations
 

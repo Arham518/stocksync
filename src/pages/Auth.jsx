@@ -20,7 +20,7 @@ export default function Auth({ mode }){
         <motion.div className={cx('auth-in')} initial={{opacity:0,y:20}} animate={{opacity:1,y:0}} transition={{duration:.6,ease:[.22,1,.36,1]}}>
           <h1>{signup?'Try the demo':'Open the demo'}</h1>
           <p className={cx('alert warn-a mt-0')} role="note"><b>Demo access — no account is created.</b>&nbsp;Nothing you type is stored or verified.</p>
-          <p className={cx('lead')}>Explore the StockSync Pro dashboard with sample data.</p>
+          <p className={cx('lead')}>Explore the TradeMatrix dashboard with sample data.</p>
           <form onSubmit={submit} noValidate>
             {signup && <div className={cx(`field ${err.name?'has-err':''}`)}><label htmlFor="n">Full name</label><input id="n" autoComplete="name" value={v.name} onChange={e=>setV({...v,name:e.target.value})}/>{err.name&&<p className={cx('err')} role="alert">{err.name}</p>}</div>}
             <div className={cx(`field ${err.email?'has-err':''}`)}><label htmlFor="e">Email</label><input id="e" type="email" autoComplete="email" value={v.email} onChange={e=>setV({...v,email:e.target.value})}/>{err.email&&<p className={cx('err')} role="alert">{err.email}</p>}</div>
@@ -29,7 +29,7 @@ export default function Auth({ mode }){
               {err.password&&<p className={cx('err')} role="alert">{err.password}</p>}</div>
             <button className={cx(btn('primary','md', 'w-full'))} type="submit">{signup?'Enter Demo':'Enter Demo'} <ArrowRight size={18} className={cx('arrow')}/></button>
           </form>
-          <p className={cx('auth-switch')}>{signup?<>Already have an account? <Link to="/login">Log in</Link></>:<>New to StockSync Pro? <Link to="/signup">Create an account</Link></>}</p>
+          <p className={cx('auth-switch')}>{signup?<>Already have an account? <Link to="/login">Log in</Link></>:<>New to TradeMatrix? <Link to="/signup">Create an account</Link></>}</p>
                   </motion.div>
       </div>
       <aside className={cx('auth-art')} aria-hidden="true">

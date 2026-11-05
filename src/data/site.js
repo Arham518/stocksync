@@ -1,5 +1,5 @@
 export const tour = [
-  { to:'/why-stocksync', label:'Why StockSync', title:"Inventory Management Shouldn't Slow Down Your Business", icon:'AlertTriangle' },
+  { to:'/why-tradematrix', label:'Why TradeMatrix', title:"Inventory Management Shouldn't Slow Down Your Business", icon:'AlertTriangle' },
   { to:'/workflow', label:'Workflow', title:'From Supplier Spreadsheet to Shopify in Minutes', icon:'Workflow' },
   { to:'/features', label:'Features', title:'Everything You Need to Manage Inventory Smarter', icon:'Sparkles' },
   { to:'/how-it-works', label:'How It Works', title:'Three Simple Steps to Better Inventory Management', icon:'ListOrdered' },
@@ -23,7 +23,7 @@ export const menus = [
     ['/integrations','Integrations','Shopify, CSV and Excel','Plug'],
   ]},
   { label:'Solutions', items:[
-    ['/why-stocksync','Why StockSync','The problem with spreadsheets','AlertTriangle'],
+    ['/why-tradematrix','Why TradeMatrix','The problem with spreadsheets','AlertTriangle'],
     ['/use-cases#small-stores','Small Stores','One store, a few suppliers','Store'],
     ['/use-cases#growing-brands','Growing Brands','More suppliers, more SKUs','TrendingUp'],
     ['/use-cases#agencies','Agencies','Multiple client stores','Building2'],

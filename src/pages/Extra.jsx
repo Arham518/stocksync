@@ -13,7 +13,7 @@ export function Integrations(){
     { I:FileSpreadsheet, n:'Excel (.xlsx, .xls)', s:'Supplier import', d:'Upload Excel workbooks from suppliers. The first worksheet is read in your browser and goes through the same validation as CSV.', tag:'Available' },
   ]
   return (<>
-    <PageHero eyebrow="Integrations" title="Works With the Tools You Already Use" lead="StockSync Pro connects your Shopify store with the supplier files you already receive. No invented integrations — just the ones the workflow needs."/>
+    <PageHero eyebrow="Integrations" title="Works With the Tools You Already Use" lead="TradeMatrix connects your Shopify store with the supplier files you already receive. No invented integrations — just the ones the workflow needs."/>
     <section className={cx('section')} style={{paddingTop:40}}><div className={cx("wrap grid gap-5 lg:grid-cols-2")}>
       {items.map(({I,n,s,d,tag},i)=> <Reveal key={n} delay={i*.08} className={cx(`card int group ${i===0?'lg:row-span-2 lg:p-10':''}`)}><div className={cx('int-top')}><IconTile as={I} size="lg"/><span className={cx(`tagp ${tag==='Available'?'core':''}`)}>{tag}</span></div><small>{s}</small><h2>{n}</h2><p>{d}</p></Reveal>)}
     </div></section>
@@ -24,9 +24,9 @@ export function Integrations(){
 const secSpan = ['lg:col-span-7','lg:col-span-5','lg:col-span-5','lg:col-span-7','lg:col-span-6','lg:col-span-6']
 
 export function Security(){
-  const items=[[KeyRound,'Least-privilege Shopify access','StockSync Pro requests only the Shopify permissions needed for products and inventory.'],[Eye,'Review before sync','No change reaches your store until you preview and confirm it.'],[ShieldCheck,'Encrypted in transit','All traffic between your browser, StockSync Pro and Shopify uses HTTPS.'],[ServerCog,'Audit trail','Every sync is recorded with updated, skipped and failed products.'],[Trash2,'Your data, your call','Request deletion of uploaded supplier files and history at any time.'],[Lock,'Account protection','Secure password storage and session handling for every account.']]
+  const items=[[KeyRound,'Least-privilege Shopify access','TradeMatrix requests only the Shopify permissions needed for products and inventory.'],[Eye,'Review before sync','No change reaches your store until you preview and confirm it.'],[ShieldCheck,'Encrypted in transit','All traffic between your browser, TradeMatrix and Shopify uses HTTPS.'],[ServerCog,'Audit trail','Every sync is recorded with updated, skipped and failed products.'],[Trash2,'Your data, your call','Request deletion of uploaded supplier files and history at any time.'],[Lock,'Account protection','Secure password storage and session handling for every account.']]
   return (<>
-    <PageHero eyebrow="Security & Data" title="Built Around Control and Transparency" lead="Inventory data runs your business. Here is how StockSync Pro is designed to handle it."/>
+    <PageHero eyebrow="Security & Data" title="Built Around Control and Transparency" lead="Inventory data runs your business. Here is how TradeMatrix is designed to handle it."/>
     <section className={cx('section')} style={{paddingTop:40}}><div className={cx("wrap grid gap-5 lg:grid-cols-12")}>
       {items.map(([I,t,d],i)=> <Reveal key={t} delay={(i%3)*.08} className={cx(`card secc group ${secSpan[i]} ${i===0?'!bg-ink !border-ink [&_h2]:!text-white [&_p]:!text-white/75':''}`)}><IconTile as={I} dark={i===0}/><h2>{t}</h2><p>{d}</p></Reveal>)}
     </div>
@@ -58,7 +58,7 @@ export function UseCases(){
 export function Roadmap(){
   const cols=[['Now','Available in the demo',['CSV and Excel supplier imports','SKU matching and validation','Review workflow with simulated sync','Manual column mapping']],['Next','Planned',['Live Shopify store connection','Saved supplier column mappings','Low-stock email alerts','Sync history from real runs']],['Later','Exploring',['Scheduled synchronization','Multi-store management for agencies','Team roles and permissions','Automated update summaries']]]
   return (<>
-    <PageHero eyebrow="Roadmap" title="What We're Building" lead="StockSync Pro is in active development. This roadmap shows planned work — it is not a list of past releases, and priorities may change."/>
+    <PageHero eyebrow="Roadmap" title="What We're Building" lead="TradeMatrix is in active development. This roadmap shows planned work — it is not a list of past releases, and priorities may change."/>
     <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap rm-grid')}>
       {cols.map(([h,s,items],i)=> <Reveal key={h} delay={i*.1} className={cx(`card rm rm-${i}`)}><div className={cx('rm-h')}><h2>{h}</h2><span className={cx('tagp')}>{s}</span></div><ul>{items.map(x=> <li key={x}><Circle size={10}/>{x}</li>)}</ul></Reveal>)}
     </div></section>
@@ -72,13 +72,13 @@ export function Docs(){
     ['Connect your Shopify store (planned)','Live store connection is in development. Today the demo compares files with a sample catalog.'],
     ['Add a supplier profile','Go to Suppliers, add a supplier and name it the way your team knows it.'],
     ['Map columns','Choose which supplier columns hold SKU, quantity and price. The mapping is reused on every future import.'],
-    ['Upload a supplier file','Open Imports and upload a CSV. StockSync Pro checks rows, duplicate SKUs and invalid quantities.'],
+    ['Upload a supplier file','Open Imports and upload a CSV. TradeMatrix checks rows, duplicate SKUs and invalid quantities.'],
     ['Review changes','Matched products, missing records, quantity differences and proposed price updates are shown side by side.'],
     ['Confirm and sync','Select the updates you want and confirm. Flagged rows are never synced automatically.'],
     ['Check the report','Sync History lists updated, skipped and failed products for every run.'],
   ]
   return (<>
-    <PageHero eyebrow="Help Center" title="Getting Started With StockSync Pro" lead="A step-by-step guide from your first supplier file to your first Shopify sync."/>
+    <PageHero eyebrow="Help Center" title="Getting Started With TradeMatrix" lead="A step-by-step guide from your first supplier file to your first Shopify sync."/>
     <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap docs')}>
       <aside className={cx('docs-toc card')} aria-label="On this page"><b>On this page</b>{steps.map(([t],i)=> <a key={t} href={`#step-${i+1}`}>{i+1}. {t}</a>)}</aside>
       <div className={cx('docs-body')}>
@@ -91,9 +91,9 @@ export function Docs(){
 
 export function About(){
   return (<>
-    <PageHero eyebrow="About" title="Less Manual Work. Better Inventory Control. More Time to Grow." lead="StockSync Pro exists because supplier spreadsheets and Shopify inventory shouldn't take hours to reconcile."/>
+    <PageHero eyebrow="About" title="Less Manual Work. Better Inventory Control. More Time to Grow." lead="TradeMatrix exists because supplier spreadsheets and Shopify inventory shouldn't take hours to reconcile."/>
     <section className={cx('section')} style={{paddingTop:40}}><div className={cx('wrap about')}>
-      <Reveal className={cx('about-l')}><h2>Why we're building it</h2><p>Shopify merchants who rely on suppliers receive inventory in every format imaginable. Updating stock and prices by hand is slow and error-prone, and one mismatched SKU can mean overselling or a wrong price.</p><p>StockSync Pro turns those files into organized, reviewable inventory updates, so merchants stay in control of every change.</p></Reveal>
+      <Reveal className={cx('about-l')}><h2>Why we're building it</h2><p>Shopify merchants who rely on suppliers receive inventory in every format imaginable. Updating stock and prices by hand is slow and error-prone, and one mismatched SKU can mean overselling or a wrong price.</p><p>TradeMatrix turns those files into organized, reviewable inventory updates, so merchants stay in control of every change.</p></Reveal>
       <Reveal className={cx('about-r')} delay={.1}>{[['Control first','Every change is previewed before it reaches your store.'],['Honest by default','No silent updates against uncertain matches.'],['Built for real workflows','Different suppliers, different spreadsheets — handled with reusable mappings.']].map(([t,d])=> <div key={t} className={cx('card val')}><h3>{t}</h3><p>{d}</p></div>)}</Reveal>
     </div></section>
     <FinalCta/>

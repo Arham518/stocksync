@@ -15,7 +15,7 @@ export default function Home(){
     <section className={cx('section teasers')}>
       <div className={cx('wrap')}>
         <div className={cx('sec-head center')}>
-          <Reveal><span className={cx('eyebrow')}>Explore StockSync Pro</span></Reveal>
+          <Reveal><span className={cx('eyebrow')}>Explore TradeMatrix</span></Reveal>
           <Reveal delay={.05}><h2 className={cx('h2')}>One organized workflow, from supplier file to Shopify</h2></Reveal>
         </div>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-12">

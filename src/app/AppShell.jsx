@@ -55,7 +55,7 @@ export default function AppShell(){
       <div className={cx('main')}>
         <header className={cx('topbar')}>
           <button className={cx('icon-btn burger-app')} onClick={()=>setDrawer(true)} aria-label="Open menu" aria-expanded={drawer} aria-controls="app-drawer"><Menu size={20}/></button>
-          <div className={cx('crumb')}><small>StockSync Pro</small><b>{current}</b></div>
+          <div className={cx('crumb')}><small>TradeMatrix</small><b>{current}</b></div>
           <button className={cx('search')} onClick={()=>setCmd(true)} aria-label="Open search (Ctrl+K)"><Search size={17}/><span className={cx('flex-1 text-left text-sm')}>Search products, SKUs, suppliers…</span><kbd className={cx('rounded-md border border-line px-1.5 text-xs')}>Ctrl K</kbd></button>
           <button className={cx('icon-btn search-sm')} onClick={()=>setCmd(true)} aria-label="Search"><Search size={19}/></button>
           <button className={cx('icon-btn')} onClick={()=>setDark(d=>!d)} aria-label={dark?'Switch to light mode':'Switch to dark mode'}>{dark?<Sun size={19}/>:<Moon size={19}/>}</button>

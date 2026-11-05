@@ -32,7 +32,7 @@ export function Hero(){
           <Reveal><span className={cx('eyebrow')}>Shopify inventory sync</span></Reveal>
           <h1 className={cx('hero-h1')}>
             {words.map((w,i)=> <motion.span key={i} className={cx('w')} initial={{opacity:0,y:'60%'}} animate={{opacity:1,y:0}} transition={{delay:.1+i*.07,duration:.8,ease:[.22,1,.36,1]}}>{w} </motion.span>)}
-            <motion.span className={cx('accent')} style={{display:'inline'}} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.5,duration:.9}}>Let StockSync Pro Do the Work.</motion.span>
+            <motion.span className={cx('accent')} style={{display:'inline'}} initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.5,duration:.9}}>Let TradeMatrix Do the Work.</motion.span>
           </h1>
           <Reveal delay={.3}><p className={cx('hero-sub')}>Sync supplier inventory with your Shopify store in minutes. Upload CSV or Excel files, match SKUs, update stock and prices, and keep your product catalog accurate without the manual work.</p></Reveal>
           <Reveal delay={.4} className={cx('hero-ctas')}>
@@ -55,7 +55,7 @@ export function Problem(){
         <div>
           <Head eyebrow="The problem" title="Inventory Management Shouldn't Slow Down Your Business"/>
           <Reveal><p className={cx('body-lg')}>Managing inventory through spreadsheets can waste valuable time and lead to costly mistakes. Outdated stock levels, mismatched SKUs, incorrect prices, and manual updates can affect your store's performance.</p></Reveal>
-          <Reveal delay={.08}><p className={cx('body-lg strong')}><b>StockSync Pro</b> simplifies the process by turning supplier files into organized, reviewable inventory updates.</p></Reveal>
+          <Reveal delay={.08}><p className={cx('body-lg strong')}><b>TradeMatrix</b> simplifies the process by turning supplier files into organized, reviewable inventory updates.</p></Reveal>
         </div>
         <div className={cx('problem-side')}>
           <Reveal className={cx('chaos card')} aria-hidden="true">
@@ -80,7 +80,7 @@ export function Solution(){
           ))}
         </div>
         <div>
-          <Head eyebrow="The solution" title="From Supplier Spreadsheet to Shopify in Minutes" lead="StockSync Pro creates a straightforward workflow for managing supplier inventory."/>
+          <Head eyebrow="The solution" title="From Supplier Spreadsheet to Shopify in Minutes" lead="TradeMatrix creates a straightforward workflow for managing supplier inventory."/>
           <Reveal delay={.15}><Link to="/how-it-works" className={cx(btn('brand','md'))}>See How It Works <ArrowRight size={18} className={cx('arrow')}/></Link></Reveal>
         </div>
       </div>
@@ -151,7 +151,7 @@ export function DashboardPreview(){
             <div className={cx('dprev-items')}>{C.dashItems.map((d,i)=> <Reveal key={d} delay={i*.05} y={10} className={cx('dprev-item')}><Check size={16}/>{d}</Reveal>)}</div>
             <Reveal><p className={cx('dprev-support')}>Find the information you need without searching through multiple spreadsheets.</p></Reveal>
           </div>
-          <Reveal className={cx('dprev-mock')} y={40} aria-label="Product preview of the StockSync Pro dashboard" role="img">
+          <Reveal className={cx('dprev-mock')} y={40} aria-label="Product preview of the TradeMatrix dashboard" role="img">
             <div className={cx('dm-stats')}>{stats.map(([k,v,s],i)=> <div key={k} className={cx('dm-stat')}><span>{k}</span><b>{v}</b><small className={cx(`t${i}`)}>{s}</small></div>)}</div>
             <div className={cx('dm-row')}>
               <div className={cx('dm-chart')}>
@@ -176,13 +176,13 @@ export function Suppliers(){
     <section className={cx('section sup')} id="suppliers">
       <div className={cx('wrap split')}>
         <div>
-          <Head eyebrow="Supplier management" title="Keep Every Supplier Organized" lead="Different suppliers use different spreadsheets. StockSync Pro helps you manage those differences with reusable column mappings and supplier-specific settings."/>
+          <Head eyebrow="Supplier management" title="Keep Every Supplier Organized" lead="Different suppliers use different spreadsheets. TradeMatrix helps you manage those differences with reusable column mappings and supplier-specific settings."/>
           <Bullets items={C.supplierBullets}/>
           <Reveal className={cx('mt')}><Link to="/app/suppliers" className={cx(btn('primary','md'))}>Organize Your Suppliers <ArrowRight size={18} className={cx('arrow')}/></Link></Reveal>
         </div>
         <Reveal className={cx('map card')} y={36}>
           <div className={cx('map-h')}><div><b>Northline Wholesale</b><small>northline_stock.csv</small></div><span className={cx('pill matched')}>Mapping saved</span></div>
-          <div className={cx('map-cols')}><small>Supplier column</small><span/><small>StockSync field</small></div>
+          <div className={cx('map-cols')}><small>Supplier column</small><span/><small>TradeMatrix field</small></div>
           {map.map(([a,b],i)=> (
             <motion.div key={a} className={cx('map-r')} initial={{opacity:0,y:10}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{delay:.2+i*.12}}>
               <span className={cx('chip')}>{a}</span><ArrowLeftRight size={16}/><span className={cx('chip brand')}>{b}</span>
@@ -208,7 +208,7 @@ export function Safety(){
           ))}
         </Reveal>
         <div>
-          <Head eyebrow="Accuracy & safety" title="Review First. Sync With Confidence." lead="Inventory changes should never feel like guesswork. StockSync Pro is designed around a review-before-sync workflow."/>
+          <Head eyebrow="Accuracy & safety" title="Review First. Sync With Confidence." lead="Inventory changes should never feel like guesswork. TradeMatrix is designed around a review-before-sync workflow."/>
           <Bullets items={C.safetyBullets}/>
           <Reveal><p className={cx('callout')}><ShieldCheck size={18}/>You stay in control of what changes in your Shopify store.</p></Reveal>
         </div>
@@ -267,7 +267,7 @@ export function Faq({ head=true }){
   return (
     <section className={cx('section faq')} id="faq">
       <div className={cx('wrap faq-wrap')}>
-        {head && <Head eyebrow="FAQ" title="Frequently Asked Questions" lead="Everything you need to know about StockSync Pro."/>}
+        {head && <Head eyebrow="FAQ" title="Frequently Asked Questions" lead="Everything you need to know about TradeMatrix."/>}
         <div className={cx('faq-list')}>
           {C.faqs.map(([q,a],i)=>{ const on=open===i; return (
             <Reveal key={q} delay={i*.04} y={14} className={cx(`faq-item ${on?'on':''}`)}>

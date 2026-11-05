@@ -12,9 +12,9 @@ export default function HeroMockup(){
   return (
     <div className={cx('hm-stage')} onMouseMove={onMove} onMouseLeave={reset}>
       <motion.div className={cx('hm-3d')} style={{ rotateX:rx, rotateY:ry }} initial={{opacity:0, rotateX:24, y:60}} animate={{opacity:1, y:0}} transition={{duration:1.2, ease:[.22,1,.36,1], delay:.2}}>
-        <div className={cx('hm-win')} role="img" aria-label="StockSync Pro inventory sync screen showing matched, missing and price-change SKUs">
+        <div className={cx('hm-win')} role="img" aria-label="TradeMatrix inventory sync screen showing matched, missing and price-change SKUs">
           <aside className={cx('hm-side')}>
-            <div className={cx('hm-brand')}><span/>StockSync Pro</div>
+            <div className={cx('hm-brand')}><span/>TradeMatrix</div>
             {[[LayoutDashboard,'Dashboard',1],[Upload,'Imports'],[Package,'Products'],[Users,'Suppliers'],[Settings,'Settings']].map(([I,l,a])=> <div key={l} className={cx(`hm-nav ${a?'on':''}`)}><I size={13}/>{l}</div>)}
           </aside>
           <div className={cx('hm-main')}>
